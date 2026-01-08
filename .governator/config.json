@@ -1,7 +1,7 @@
 {
   "default_branch": "main",
   "done_check": {
-    "cooldown_seconds": 300,
+    "cooldown_seconds": 30,
     "last_check": 0
   },
   "next_task_id": 1,
@@ -17,7 +17,7 @@
   },
   "remote_name": "origin",
   "worker_caps": {
-    "global": 1
+    "global": 5
   },
   "worker_timeout_seconds": 900
 }
