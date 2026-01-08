@@ -5,6 +5,8 @@ set -u
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # shellcheck source=lib/logging.sh
 source "${SCRIPT_DIR}/lib/logging.sh"
+# shellcheck source=lib/config.sh
+source "${SCRIPT_DIR}/lib/config.sh"
 # shellcheck source=lib/preflight.sh
 source "${SCRIPT_DIR}/lib/preflight.sh"
 # shellcheck source=lib/state_store.sh
@@ -169,7 +171,10 @@ main() {
   init_run_logging
   trap 'on_exit $?' EXIT
 
-  log_run_start
+  resolve_input_paths
+  log_run_start "config_path=${CONFIG_PATH}"
+
+  load_inputs || return 1
 
   preflight_check || return 1
 
