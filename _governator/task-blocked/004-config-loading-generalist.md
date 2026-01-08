@@ -46,3 +46,7 @@ configuration schema so pipeline stages can consume consistent inputs.
 ## Merge Failure
 
 2026-01-08T21:41:34Z [governator]: Unable to fast-forward merge worker/generalist/004-config-loading-generalist into main.
+
+## Governator Block
+
+2026-01-08T21:41:45Z [governator]: Missing worker branch origin/worker/generalist/004-config-loading-generalist for 004-config-loading-generalist.
