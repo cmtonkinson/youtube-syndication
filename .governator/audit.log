@@ -163,3 +163,4 @@
 2026-01-08T21:41Z 008-serialized-download-generalist -> moved to task-blocked
 2026-01-08T21:41Z 004-config-loading-generalist -> worker elapsed reviewer: 108s
 2026-01-08T21:41Z 004-config-loading-generalist -> moved to task-blocked
+2026-01-08T21:41Z 000-unblock-planner -> created unblock planner task
