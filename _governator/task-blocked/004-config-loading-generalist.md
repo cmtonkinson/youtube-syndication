@@ -64,3 +64,7 @@ changing scope or requirements.
 - Added bash config/subscription loader with defaults, validation, and path setup.
 - Wired input loading into `yts.sh` so stages share parsed configuration.
 - Assumption: blank lines and `#`-prefixed lines in `subscriptions.txt` are ignored.
+
+## Review Result
+
+2026-01-08T21:51:00Z [reviewer]: Decision: block

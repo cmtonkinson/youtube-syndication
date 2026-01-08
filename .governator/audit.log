@@ -222,3 +222,8 @@
 2026-01-08T21:48Z 010-import-and-cleanup-generalist -> recovered reviewer output and pushed branch
 2026-01-08T21:48Z 010-import-and-cleanup-generalist -> worker elapsed reviewer: 172s
 2026-01-08T21:48Z 010-import-and-cleanup-generalist -> moved to task-blocked
+2026-01-08T21:50Z 004-config-loading-generalist -> worker elapsed generalist: 327s
+2026-01-08T21:50Z 004-config-loading-generalist -> starting review for 004-config-loading-generalist
+2026-01-08T21:50Z 004-config-loading-generalist -> worker reviewer started
+2026-01-08T21:51Z 004-config-loading-generalist -> review decision: block
+2026-01-08T21:51Z 004-config-loading-generalist -> moved to task-blocked
