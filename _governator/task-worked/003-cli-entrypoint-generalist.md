@@ -44,3 +44,6 @@ for the sync -> download -> process -> import pipeline order.
 ## Assignment
 
 2026-01-08T21:24:55Z [governator]: Assigned to generalist.
+
+## Change Summary
+- Added bash `yts.sh` entrypoint with help output and ordered stage orchestration.
