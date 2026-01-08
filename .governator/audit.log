@@ -1,2 +1,4 @@
 2026-01-08T21:00Z governator -> update applied: updated _governator/lib/queues.sh, updated _governator/lib/status.sh
 2026-01-08T21:02Z 000-architecture-bootstrap-architect -> created bootstrap task
+2026-01-08T21:02Z 000-architecture-bootstrap-architect -> assigned to architect
+2026-01-08T21:02Z 000-architecture-bootstrap-architect -> worker architect started
