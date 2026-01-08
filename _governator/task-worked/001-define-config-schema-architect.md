@@ -54,3 +54,12 @@ without ambiguity.
 ## Merge Failure
 
 2026-01-08T21:29:37Z [governator]: Unable to fast-forward merge worker/architect/001-define-config-schema-architect into main.
+
+## Change Summary
+- Added a configuration schema document covering `yts.conf` format, defaults,
+  skip filters, path settings, and validation rules.
+- Updated arc42 deferred decisions to reflect that the configuration schema is
+  now documented.
+- Assumptions: config is optional, defaults apply when missing, relative paths
+  resolve from the config file directory, and size/duration limits use MiB and
+  minutes respectively.
