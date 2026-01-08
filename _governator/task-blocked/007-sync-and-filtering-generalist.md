@@ -50,3 +50,7 @@ computes publish-date ordering, and updates state without downloading media.
 ## Merge Failure
 
 2026-01-08T21:42:05Z [governator]: Unable to fast-forward merge worker/generalist/007-sync-and-filtering-generalist into main.
+
+## Governator Block
+
+2026-01-08T21:44:45Z [governator]: Missing worker branch origin/worker/generalist/007-sync-and-filtering-generalist for 007-sync-and-filtering-generalist.
