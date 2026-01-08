@@ -56,3 +56,9 @@
 2026-01-08T21:27Z 004-config-loading-generalist -> worker elapsed generalist: 71s
 2026-01-08T21:27Z 004-config-loading-generalist -> retrying generalist task
 2026-01-08T21:27Z 004-config-loading-generalist -> worker generalist started
+2026-01-08T21:27Z 002-define-logging-conventions-architect -> worker elapsed architect: 139s
+2026-01-08T21:27Z 002-define-logging-conventions-architect -> starting review for 002-define-logging-conventions-architect
+2026-01-08T21:27Z 002-define-logging-conventions-architect -> worker reviewer started
+2026-01-08T21:27Z 005-preflight-and-logging-generalist -> worker elapsed generalist: 57s
+2026-01-08T21:27Z 005-preflight-and-logging-generalist -> retrying generalist task
+2026-01-08T21:27Z 005-preflight-and-logging-generalist -> worker generalist started
