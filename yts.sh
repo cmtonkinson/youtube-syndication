@@ -7,6 +7,8 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "${SCRIPT_DIR}/lib/logging.sh"
 # shellcheck source=lib/preflight.sh
 source "${SCRIPT_DIR}/lib/preflight.sh"
+# shellcheck source=lib/state_store.sh
+source "${SCRIPT_DIR}/lib/state_store.sh"
 
 usage() {
   cat <<'EOF'
@@ -30,6 +32,91 @@ sync_stage() {
 }
 
 download_stage() {
+  local state_dir="${STATE_DIR:-./state}"
+  local staging_dir="${STAGING_DIR:-./staging}"
+
+  if [[ ! -d "${state_dir}" ]]; then
+    log_info_event "download_skipped" "download" "state directory missing" \
+      "state_dir=${state_dir}"
+    return 0
+  fi
+
+  local state_files=()
+  mapfile -t state_files < <(find "${state_dir}" -maxdepth 1 -type f -name '*.json' -print | sort)
+
+  if [[ "${#state_files[@]}" -eq 0 ]]; then
+    log_info_event "download_skipped" "download" "no state files found" \
+      "state_dir=${state_dir}"
+    return 0
+  fi
+
+  local state_file
+  for state_file in "${state_files[@]}"; do
+    local subscription
+    subscription="$(basename "${state_file}" .json)"
+    if [[ -z "${subscription}" ]]; then
+      subscription="unknown"
+    fi
+
+    while IFS=$'\t' read -r video_id published_at status video_path thumbnail_path; do
+      if [[ -z "${video_id}" ]]; then
+        continue
+      fi
+
+      case "${status}" in
+        downloaded|processed)
+          log_video_outcome "download" "skipped" "${video_id}" "" \
+            "subscription=${subscription}" "reason=already_${status}"
+          continue
+          ;;
+        pending)
+          ;;
+        *)
+          continue
+          ;;
+      esac
+
+      local download_dir="${staging_dir}/${subscription}"
+      if ! mkdir -p "${download_dir}"; then
+        state_store_upsert_record "${state_file}" "${video_id}" "${published_at}" \
+          "download_failed" "" ""
+        log_video_outcome "download" "failed" "${video_id}" "" \
+          "subscription=${subscription}" "error=staging_dir_create_failed"
+        continue
+      fi
+
+      local output_template="${download_dir}/${video_id}.%(ext)s"
+      local download_target="${video_id}"
+      if [[ "${video_id}" != http* ]]; then
+        download_target="https://www.youtube.com/watch?v=${video_id}"
+      fi
+
+      if yt-dlp --no-playlist --merge-output-format mp4 \
+        --write-thumbnail --convert-thumbnails jpg \
+        -o "${output_template}" "${download_target}"; then
+        local video_file="${download_dir}/${video_id}.mp4"
+        local thumb_file="${download_dir}/${video_id}.jpg"
+        if [[ -f "${video_file}" && -f "${thumb_file}" ]]; then
+          state_store_upsert_record "${state_file}" "${video_id}" "${published_at}" \
+            "downloaded" "${video_file}" "${thumb_file}"
+          log_video_outcome "download" "success" "${video_id}" "" \
+            "subscription=${subscription}" "video_path=${video_file}" \
+            "thumbnail_path=${thumb_file}"
+        else
+          state_store_upsert_record "${state_file}" "${video_id}" "${published_at}" \
+            "download_failed" "${video_file}" "${thumb_file}"
+          log_video_outcome "download" "failed" "${video_id}" "" \
+            "subscription=${subscription}" "error=missing_output_files"
+        fi
+      else
+        state_store_upsert_record "${state_file}" "${video_id}" "${published_at}" \
+          "download_failed" "" ""
+        log_video_outcome "download" "failed" "${video_id}" "" \
+          "subscription=${subscription}" "error=yt_dlp_failed"
+      fi
+    done < <(state_store_read_records "${state_file}")
+  done
+
   return 0
 }
 

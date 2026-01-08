@@ -5,7 +5,7 @@
 # {
 #   "version": 1,
 #   "records": [
-#     {"id":"...","published_at":"...","status":"..."}
+#     {"id":"...","published_at":"...","status":"...","video_path":"...","thumbnail_path":"..."}
 #   ]
 # }
 
@@ -38,14 +38,22 @@ state_store_read_records() {
       id = id_match[1]
       published = ""
       status = ""
+      video_path = ""
+      thumbnail_path = ""
       if (match($0, /"published_at"[[:space:]]*:[[:space:]]*"([^"]*)"/, pub_match)) {
         published = pub_match[1]
       }
       if (match($0, /"status"[[:space:]]*:[[:space:]]*"([^"]*)"/, status_match)) {
         status = status_match[1]
       }
+      if (match($0, /"video_path"[[:space:]]*:[[:space:]]*"([^"]*)"/, video_match)) {
+        video_path = video_match[1]
+      }
+      if (match($0, /"thumbnail_path"[[:space:]]*:[[:space:]]*"([^"]*)"/, thumb_match)) {
+        thumbnail_path = thumb_match[1]
+      }
       if (id != "") {
-        print id "\t" published "\t" status
+        print id "\t" published "\t" status "\t" video_path "\t" thumbnail_path
       }
     }
   ' "$file"
@@ -55,16 +63,22 @@ state_store_emit_record() {
   local id="$1"
   local published_at="$2"
   local status="$3"
+  local video_path="${4-}"
+  local thumbnail_path="${5-}"
   local safe_id
   local safe_published
   local safe_status
+  local safe_video
+  local safe_thumbnail
 
   safe_id="$(state_store_json_escape "$id")"
   safe_published="$(state_store_json_escape "$published_at")"
   safe_status="$(state_store_json_escape "$status")"
+  safe_video="$(state_store_json_escape "$video_path")"
+  safe_thumbnail="$(state_store_json_escape "$thumbnail_path")"
 
-  printf '    {"id":"%s","published_at":"%s","status":"%s"}' \
-    "$safe_id" "$safe_published" "$safe_status"
+  printf '    {"id":"%s","published_at":"%s","status":"%s","video_path":"%s","thumbnail_path":"%s"}' \
+    "$safe_id" "$safe_published" "$safe_status" "$safe_video" "$safe_thumbnail"
 }
 
 state_store_init_file() {
@@ -118,6 +132,8 @@ state_store_upsert_record() {
   local video_id="$2"
   local published_at="$3"
   local status="$4"
+  local video_path="${5-}"
+  local thumbnail_path="${6-}"
   local dir
   local tmp
   local found=0
@@ -129,10 +145,16 @@ state_store_upsert_record() {
 
   {
     printf '{\n  "version": 1,\n  "records": [\n'
-    while IFS=$'\t' read -r existing_id existing_published existing_status; do
+    while IFS=$'\t' read -r existing_id existing_published existing_status existing_video existing_thumbnail; do
       if [[ "$existing_id" == "$video_id" ]]; then
         existing_published="$published_at"
         existing_status="$status"
+        if [[ -n "$video_path" ]]; then
+          existing_video="$video_path"
+        fi
+        if [[ -n "$thumbnail_path" ]]; then
+          existing_thumbnail="$thumbnail_path"
+        fi
         found=1
       fi
 
@@ -141,14 +163,15 @@ state_store_upsert_record() {
       fi
 
       first=0
-      state_store_emit_record "$existing_id" "$existing_published" "$existing_status"
+      state_store_emit_record "$existing_id" "$existing_published" "$existing_status" \
+        "$existing_video" "$existing_thumbnail"
     done < <(state_store_read_records "$file")
 
     if [[ $found -eq 0 ]]; then
       if [[ $first -eq 0 ]]; then
         printf ',\n'
       fi
-      state_store_emit_record "$video_id" "$published_at" "$status"
+      state_store_emit_record "$video_id" "$published_at" "$status" "$video_path" "$thumbnail_path"
     fi
 
     printf '\n  ]\n}\n'
