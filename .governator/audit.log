@@ -82,3 +82,5 @@
 2026-01-08T21:29Z 006-json-state-store-generalist -> worker reviewer started
 2026-01-08T21:29Z 001-define-config-schema-architect -> worker elapsed reviewer: 82s
 2026-01-08T21:29Z 001-define-config-schema-architect -> moved to task-assigned
+2026-01-08T21:29Z 001-define-config-schema-architect -> retrying architect task
+2026-01-08T21:29Z 001-define-config-schema-architect -> worker architect started
