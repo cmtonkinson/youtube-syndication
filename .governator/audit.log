@@ -196,3 +196,5 @@
 2026-01-08T21:45Z 000-unblock-planner -> worker reviewer started
 2026-01-08T21:45Z 000-unblock-planner -> review decision: block
 2026-01-08T21:45Z 000-unblock-planner -> moved to task-blocked
+2026-01-08T21:45Z 008-serialized-download-generalist -> worker elapsed reviewer: 202s
+2026-01-08T21:45Z 008-serialized-download-generalist -> moved to task-blocked

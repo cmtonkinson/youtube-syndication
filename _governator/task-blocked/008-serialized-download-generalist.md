@@ -57,3 +57,7 @@ serialized manner and records outcomes in state.
 The reviewer decision did not include a blocking reason or required fixes.
 Without that context, it is not possible to adjust scope or requirements to
 address the issue. Need the specific review rationale or requested changes.
+
+## Governator Block
+
+2026-01-08T21:45:17Z [governator]: Missing worker branch origin/worker/generalist/008-serialized-download-generalist for 008-serialized-download-generalist.
