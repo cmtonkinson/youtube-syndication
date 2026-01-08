@@ -48,3 +48,6 @@
 2026-01-08T21:26Z 005-preflight-and-logging-generalist -> worker elapsed generalist: 74s
 2026-01-08T21:26Z 005-preflight-and-logging-generalist -> retrying generalist task
 2026-01-08T21:26Z 005-preflight-and-logging-generalist -> worker generalist started
+2026-01-08T21:27Z 003-cli-entrypoint-generalist -> worker elapsed reviewer: 57s
+2026-01-08T21:27Z 003-cli-entrypoint-generalist -> review decision: approve
+2026-01-08T21:27Z 003-cli-entrypoint-generalist -> moved to task-done
