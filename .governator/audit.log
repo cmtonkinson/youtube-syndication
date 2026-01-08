@@ -212,3 +212,5 @@
 2026-01-08T21:46Z 013-readme-documentation-generalist -> worker reviewer started
 2026-01-08T21:46Z 013-readme-documentation-generalist -> review decision: block
 2026-01-08T21:46Z 013-readme-documentation-generalist -> moved to task-blocked
+2026-01-08T21:46Z 000-unblock-planner -> worker elapsed reviewer: 86s
+2026-01-08T21:46Z 000-unblock-planner -> moved to task-blocked

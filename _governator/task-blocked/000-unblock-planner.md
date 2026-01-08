@@ -53,3 +53,7 @@ unblock, leave it blocked.
 ## Review Result
 
 2026-01-08T21:45:13Z [reviewer]: Decision: block
+
+## Governator Block
+
+2026-01-08T21:46:47Z [governator]: Missing worker branch origin/worker/planner/000-unblock-planner for 000-unblock-planner.
