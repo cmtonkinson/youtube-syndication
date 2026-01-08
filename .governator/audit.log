@@ -105,3 +105,6 @@
 2026-01-08T21:32Z 004-config-loading-generalist -> worker elapsed generalist: 53s
 2026-01-08T21:32Z 004-config-loading-generalist -> retrying generalist task
 2026-01-08T21:32Z 004-config-loading-generalist -> worker generalist started
+2026-01-08T21:32Z 008-serialized-download-generalist -> worker elapsed generalist: 80s
+2026-01-08T21:32Z 008-serialized-download-generalist -> retrying generalist task
+2026-01-08T21:32Z 008-serialized-download-generalist -> worker generalist started
