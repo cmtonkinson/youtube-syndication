@@ -45,3 +45,6 @@
 2026-01-08T21:25Z 004-config-loading-generalist -> worker elapsed generalist: 45s
 2026-01-08T21:25Z 004-config-loading-generalist -> retrying generalist task
 2026-01-08T21:25Z 004-config-loading-generalist -> worker generalist started
+2026-01-08T21:26Z 005-preflight-and-logging-generalist -> worker elapsed generalist: 74s
+2026-01-08T21:26Z 005-preflight-and-logging-generalist -> retrying generalist task
+2026-01-08T21:26Z 005-preflight-and-logging-generalist -> worker generalist started
