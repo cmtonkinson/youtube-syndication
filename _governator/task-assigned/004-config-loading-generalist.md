@@ -42,3 +42,7 @@ configuration schema so pipeline stages can consume consistent inputs.
 ## Assignment
 
 2026-01-08T21:24:57Z [governator]: Assigned to generalist.
+
+## Merge Failure
+
+2026-01-08T21:41:34Z [governator]: Unable to fast-forward merge worker/generalist/004-config-loading-generalist into main.
