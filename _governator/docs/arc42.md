@@ -67,5 +67,4 @@ expands beyond a local pipeline.
   - Timezone consistency when ordering by publish date.
 - Deferred decisions:
   - Final configuration schema and validation rules.
-  - Exact log format and machine-readable summary outputs.
   - Concurrency model for processing/import stages.

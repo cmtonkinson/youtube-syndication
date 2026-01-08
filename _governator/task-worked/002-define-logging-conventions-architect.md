@@ -44,3 +44,10 @@ transparency (ASR-5) is implemented consistently.
 ## Assignment
 
 2026-01-08T21:24:52Z [governator]: Assigned to architect.
+
+## Change Summary
+- Added a logging conventions document defining logfmt fields, severity levels,
+  standard events, summary output, and exit codes.
+- Updated arc42 deferred decisions to remove the logging format item.
+- Assumptions: the summary file is written to `./run-summary.logfmt`, and exit
+  codes use 0/1/2 for success/fatal/partial failure.
