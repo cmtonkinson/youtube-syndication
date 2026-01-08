@@ -63,3 +63,9 @@ without ambiguity.
 - Assumptions: config is optional, defaults apply when missing, relative paths
   resolve from the config file directory, and size/duration limits use MiB and
   minutes respectively.
+
+## Review Result
+
+2026-01-08T21:35:17Z [reviewer]: Decision: approve
+2026-01-08T21:35:17Z [reviewer]: Comments:
+2026-01-08T21:35:17Z [reviewer]: - The configuration doc in `_governator/docs/configuration.md` defines the file names/locations, bash-friendly format, all required schema fields, defaults, and validation rules for filters and paths, and `arc42.md` removes the deferred decision now that the schema is documented.
