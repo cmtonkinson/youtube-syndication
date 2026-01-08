@@ -114,3 +114,6 @@
 2026-01-08T21:33Z 004-config-loading-generalist -> worker generalist started
 2026-01-08T21:33Z 007-sync-and-filtering-generalist -> retrying generalist task
 2026-01-08T21:33Z 007-sync-and-filtering-generalist -> worker generalist started
+2026-01-08T21:33Z 001-define-config-schema-architect -> worker elapsed architect: 195s
+2026-01-08T21:33Z 001-define-config-schema-architect -> starting review for 001-define-config-schema-architect
+2026-01-08T21:33Z 001-define-config-schema-architect -> worker reviewer started
