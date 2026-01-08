@@ -43,3 +43,8 @@ processing status so runs are idempotent and resumable.
 ## Assignment
 
 2026-01-08T21:27:08Z [governator]: Assigned to generalist.
+
+## Change Summary
+- Added bash JSON state store helpers for reading, upserting, and lookup.
+- Implemented atomic writes with temp file moves and graceful handling of missing state.
+- Added a processed-status lookup helper for idempotent checks.
