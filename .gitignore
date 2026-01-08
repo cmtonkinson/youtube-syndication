@@ -1,0 +1,6 @@
+# Governator
+.governator/governator.lock
+.governator/governator.locked
+.governator/failed-merges.log
+.governator/in-flight.log
+.governator/logs/

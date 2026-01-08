@@ -1,0 +1,23 @@
+{
+  "default_branch": "main",
+  "done_check": {
+    "cooldown_seconds": 300,
+    "last_check": 0
+  },
+  "next_task_id": 1,
+  "planning": {
+    "gov_hash": ""
+  },
+  "project_mode": "new",
+  "reasoning_effort": {
+    "architect": "high",
+    "default": "medium",
+    "planner": "high",
+    "test_engineer": "low"
+  },
+  "remote_name": "origin",
+  "worker_caps": {
+    "global": 1
+  },
+  "worker_timeout_seconds": 900
+}
