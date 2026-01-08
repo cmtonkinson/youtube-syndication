@@ -2,3 +2,6 @@
 2026-01-08T21:02Z 000-architecture-bootstrap-architect -> created bootstrap task
 2026-01-08T21:02Z 000-architecture-bootstrap-architect -> assigned to architect
 2026-01-08T21:02Z 000-architecture-bootstrap-architect -> worker architect started
+2026-01-08T21:07Z 000-architecture-bootstrap-architect -> worker elapsed architect: 274s
+2026-01-08T21:07Z 000-architecture-bootstrap-architect -> starting review for 000-architecture-bootstrap-architect
+2026-01-08T21:07Z 000-architecture-bootstrap-architect -> worker reviewer started
