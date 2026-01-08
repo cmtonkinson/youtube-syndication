@@ -130,3 +130,5 @@
 2026-01-08T21:35Z 001-define-config-schema-architect -> worker elapsed reviewer: 109s
 2026-01-08T21:35Z 001-define-config-schema-architect -> review decision: approve
 2026-01-08T21:35Z 001-define-config-schema-architect -> moved to task-done
+2026-01-08T21:35Z 009-metadata-embedding-generalist -> assigned to generalist
+2026-01-08T21:35Z 009-metadata-embedding-generalist -> worker generalist started
