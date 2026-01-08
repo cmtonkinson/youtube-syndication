@@ -9,6 +9,8 @@
   - Bash-based CLI with a single entrypoint `yts.sh`.
   - Use `yt-dlp` for downloads and `AtomicParsley` for metadata embedding.
   - Output mp4 videos and jpg thumbnails only.
+  - Shorts and livestreams are skipped by default where detectable.
+  - Only destination copies are retained; source downloads are not kept.
   - One season per subscription; episode ordering by publish date.
   - Downloads must be serialized; processing/import may be parallelized.
   - Configuration begins with `subscriptions.txt` and local config files.

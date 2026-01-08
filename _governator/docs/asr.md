@@ -24,9 +24,10 @@
 - Stimulus: User configures skip rules (shorts/livestreams, size/duration,
   title patterns).
 - Environment: Metadata available prior to download via yt-dlp.
-- Required Response: The system excludes matching items before download begins.
+- Required Response: The system excludes matching items before download begins,
+  and skips shorts/livestreams by default unless explicitly overridden.
 - Measurable Threshold: 100% of items matching skip criteria are not
-  downloaded.
+  downloaded, and shorts/livestreams are excluded in the default configuration.
 - Why this shapes architecture: Requires a metadata inspection stage ahead of
   download and clearly defined filter inputs.
 
@@ -49,3 +50,14 @@
   failures exit non-zero.
 - Why this shapes architecture: Requires consistent logging and error handling
   conventions across stages.
+
+## ASR-6: Single-copy storage policy
+- Stimulus: Videos are downloaded, processed, and imported into the Plex-ready
+  library.
+- Environment: Local filesystem with transient staging/download directories.
+- Required Response: After successful import, only the destination copy remains
+  in the Plex library; source downloads are removed and duplicates avoided.
+- Measurable Threshold: Post-run storage contains exactly one mp4 per video in
+  the destination tree and no completed media files in staging locations.
+- Why this shapes architecture: Requires explicit cleanup, atomic moves, and
+  storage-aware pipeline sequencing.
