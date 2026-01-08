@@ -51,3 +51,9 @@ serialized manner and records outcomes in state.
 ## Review Result
 
 2026-01-08T21:41:40Z [reviewer]: Decision: block
+
+## Unblock Analysis
+
+The reviewer decision did not include a blocking reason or required fixes.
+Without that context, it is not possible to adjust scope or requirements to
+address the issue. Need the specific review rationale or requested changes.
