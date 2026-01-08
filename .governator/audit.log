@@ -147,3 +147,6 @@
 2026-01-08T21:36Z 008-serialized-download-generalist -> worker generalist started
 2026-01-08T21:36Z 010-import-and-cleanup-generalist -> assigned to generalist
 2026-01-08T21:36Z 010-import-and-cleanup-generalist -> worker generalist started
+2026-01-08T21:38Z 010-import-and-cleanup-generalist -> worker elapsed generalist: 123s
+2026-01-08T21:38Z 010-import-and-cleanup-generalist -> retrying generalist task
+2026-01-08T21:38Z 010-import-and-cleanup-generalist -> worker generalist started
