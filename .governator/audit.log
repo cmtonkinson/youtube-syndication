@@ -29,3 +29,13 @@
 2026-01-08T21:24Z 000-gap-analysis-planner -> review decision: approve
 2026-01-08T21:24Z 000-gap-analysis-planner -> moved to task-done
 2026-01-08T21:24Z 000-gap-analysis-planner -> archived to task-archive
+2026-01-08T21:24Z 001-define-config-schema-architect -> assigned to architect
+2026-01-08T21:24Z 001-define-config-schema-architect -> worker architect started
+2026-01-08T21:24Z 002-define-logging-conventions-architect -> assigned to architect
+2026-01-08T21:24Z 002-define-logging-conventions-architect -> worker architect started
+2026-01-08T21:24Z 003-cli-entrypoint-generalist -> assigned to generalist
+2026-01-08T21:24Z 003-cli-entrypoint-generalist -> worker generalist started
+2026-01-08T21:24Z 004-config-loading-generalist -> assigned to generalist
+2026-01-08T21:24Z 004-config-loading-generalist -> worker generalist started
+2026-01-08T21:25Z 005-preflight-and-logging-generalist -> assigned to generalist
+2026-01-08T21:25Z 005-preflight-and-logging-generalist -> worker generalist started
