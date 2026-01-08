@@ -178,3 +178,6 @@
 2026-01-08T21:43Z 011-core-logic-tests-test_engineer -> moved to task-blocked
 2026-01-08T21:43Z 000-unblock-planner -> retrying planner task
 2026-01-08T21:43Z 000-unblock-planner -> worker planner started
+2026-01-08T21:43Z 009-metadata-embedding-generalist -> recovered reviewer output and pushed branch
+2026-01-08T21:43Z 009-metadata-embedding-generalist -> worker elapsed reviewer: 105s
+2026-01-08T21:43Z 009-metadata-embedding-generalist -> moved to task-blocked
