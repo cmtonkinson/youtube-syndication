@@ -42,3 +42,7 @@ computes publish-date ordering, and updates state without downloading media.
 =============================================================================
 
 ## Notes
+
+## Assignment
+
+2026-01-08T21:29:21Z [governator]: Assigned to generalist.
