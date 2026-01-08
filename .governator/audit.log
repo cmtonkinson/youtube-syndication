@@ -72,3 +72,7 @@
 2026-01-08T21:29Z 002-define-logging-conventions-architect -> worker elapsed reviewer: 93s
 2026-01-08T21:29Z 002-define-logging-conventions-architect -> review decision: approve
 2026-01-08T21:29Z 002-define-logging-conventions-architect -> moved to task-done
+2026-01-08T21:29Z 005-preflight-and-logging-generalist -> retrying generalist task
+2026-01-08T21:29Z 005-preflight-and-logging-generalist -> worker generalist started
+2026-01-08T21:29Z 007-sync-and-filtering-generalist -> assigned to generalist
+2026-01-08T21:29Z 007-sync-and-filtering-generalist -> worker generalist started
