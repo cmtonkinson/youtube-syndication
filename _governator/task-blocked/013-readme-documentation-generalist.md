@@ -49,3 +49,7 @@ usage of the `yts.sh` pipeline.
   filters, and current vs. target output layouts.
 - Noted that config parsing and some stages are placeholders to match current
   implementation behavior.
+
+## Review Result
+
+2026-01-08T21:46:43Z [reviewer]: Decision: block

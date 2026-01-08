@@ -206,3 +206,9 @@
 2026-01-08T21:45Z 010-import-and-cleanup-generalist -> starting review for 010-import-and-cleanup-generalist
 2026-01-08T21:45Z 010-import-and-cleanup-generalist -> worker reviewer started
 2026-01-08T21:45Z 010-import-and-cleanup-generalist -> moved to task-assigned
+2026-01-08T21:46Z 000-unblock-planner -> recovered reviewer output and pushed branch
+2026-01-08T21:46Z 013-readme-documentation-generalist -> worker elapsed generalist: 96s
+2026-01-08T21:46Z 013-readme-documentation-generalist -> starting review for 013-readme-documentation-generalist
+2026-01-08T21:46Z 013-readme-documentation-generalist -> worker reviewer started
+2026-01-08T21:46Z 013-readme-documentation-generalist -> review decision: block
+2026-01-08T21:46Z 013-readme-documentation-generalist -> moved to task-blocked
