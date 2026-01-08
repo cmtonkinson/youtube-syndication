@@ -62,3 +62,6 @@
 2026-01-08T21:27Z 005-preflight-and-logging-generalist -> worker elapsed generalist: 57s
 2026-01-08T21:27Z 005-preflight-and-logging-generalist -> retrying generalist task
 2026-01-08T21:27Z 005-preflight-and-logging-generalist -> worker generalist started
+2026-01-08T21:28Z 001-define-config-schema-architect -> worker elapsed architect: 180s
+2026-01-08T21:28Z 001-define-config-schema-architect -> starting review for 001-define-config-schema-architect
+2026-01-08T21:28Z 001-define-config-schema-architect -> worker reviewer started
