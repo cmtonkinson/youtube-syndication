@@ -39,3 +39,7 @@ helpers that conform to the documented logging conventions.
 =============================================================================
 
 ## Notes
+
+## Assignment
+
+2026-01-08T21:25:00Z [governator]: Assigned to generalist.
