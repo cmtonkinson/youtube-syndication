@@ -90,3 +90,10 @@ This task is complete when:
   by yt-dlp where available.
 - Follow-up concern: confirm reliable shorts/livestream indicators during
   implementation planning.
+
+## Review Result
+
+2026-01-08T21:13:47Z [reviewer]: Decision: approve
+2026-01-08T21:13:47Z [reviewer]: Comments:
+2026-01-08T21:13:47Z [reviewer]: - ASRs and arc42 now explicitly capture default shorts/livestream skipping and the single-copy storage policy, aligning with GOVERNATOR.md constraints.
+2026-01-08T21:13:47Z [reviewer]: - ADRs reference the correct task-worked path for traceability.
