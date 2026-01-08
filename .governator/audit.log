@@ -164,3 +164,5 @@
 2026-01-08T21:41Z 004-config-loading-generalist -> worker elapsed reviewer: 108s
 2026-01-08T21:41Z 004-config-loading-generalist -> moved to task-blocked
 2026-01-08T21:41Z 000-unblock-planner -> created unblock planner task
+2026-01-08T21:41Z 011-core-logic-tests-test_engineer -> assigned to test_engineer
+2026-01-08T21:41Z 011-core-logic-tests-test_engineer -> worker test_engineer started
