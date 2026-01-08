@@ -66,5 +66,4 @@ expands beyond a local pipeline.
   - Title sanitization and naming collisions.
   - Timezone consistency when ordering by publish date.
 - Deferred decisions:
-  - Final configuration schema and validation rules.
   - Concurrency model for processing/import stages.
