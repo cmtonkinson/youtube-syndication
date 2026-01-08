@@ -92,3 +92,7 @@
 2026-01-08T21:30Z 006-json-state-store-generalist -> worker elapsed reviewer: 60s
 2026-01-08T21:30Z 006-json-state-store-generalist -> review decision: approve
 2026-01-08T21:30Z 006-json-state-store-generalist -> moved to task-done
+2026-01-08T21:30Z 007-sync-and-filtering-generalist -> retrying generalist task
+2026-01-08T21:30Z 007-sync-and-filtering-generalist -> worker generalist started
+2026-01-08T21:30Z 008-serialized-download-generalist -> assigned to generalist
+2026-01-08T21:30Z 008-serialized-download-generalist -> worker generalist started
