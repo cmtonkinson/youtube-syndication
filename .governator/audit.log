@@ -188,3 +188,6 @@
 2026-01-08T21:44Z 007-sync-and-filtering-generalist -> moved to task-blocked
 2026-01-08T21:44Z 013-readme-documentation-generalist -> assigned to generalist
 2026-01-08T21:44Z 013-readme-documentation-generalist -> worker generalist started
+2026-01-08T21:45Z 008-serialized-download-generalist -> recovered reviewer output and pushed branch
+2026-01-08T21:45Z 012-ci-pipeline-devops -> worker elapsed devops: 38s
+2026-01-08T21:45Z 012-ci-pipeline-devops -> moved to task-blocked

@@ -42,3 +42,7 @@ jobs to validate changes automatically.
 ## Assignment
 
 2026-01-08T21:44:04Z [governator]: Assigned to devops.
+
+## Governator Block
+
+2026-01-08T21:45:07Z [governator]: Missing worker branch origin/worker/devops/012-ci-pipeline-devops for 012-ci-pipeline-devops.
