@@ -50,3 +50,8 @@ configuration schema so pipeline stages can consume consistent inputs.
 ## Governator Block
 
 2026-01-08T21:41:45Z [governator]: Missing worker branch origin/worker/generalist/004-config-loading-generalist for 004-config-loading-generalist.
+
+## Unblock Note
+
+Blocking condition was an absent worker branch. Requeueing the task without
+changing scope or requirements.

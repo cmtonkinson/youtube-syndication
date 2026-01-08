@@ -43,3 +43,9 @@ unblock, leave it blocked.
 
 2026-01-08T21:41:51Z [governator]: - 004-config-loading-generalist: 2026-01-08T21:41:45Z [governator]: Missing worker branch origin/worker/generalist/004-config-loading-generalist for 004-config-loading-generalist.
 2026-01-08T21:41:51Z [governator]: - 008-serialized-download-generalist: reason unavailable
+
+## Change Summary
+
+- Requeued tasks 004 and 011 with unblock notes after confirming they were
+  blocked only by missing worker branches.
+- Documented missing review rationale for task 008 and left it blocked.
