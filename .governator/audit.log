@@ -39,3 +39,9 @@
 2026-01-08T21:24Z 004-config-loading-generalist -> worker generalist started
 2026-01-08T21:25Z 005-preflight-and-logging-generalist -> assigned to generalist
 2026-01-08T21:25Z 005-preflight-and-logging-generalist -> worker generalist started
+2026-01-08T21:25Z 003-cli-entrypoint-generalist -> worker elapsed generalist: 45s
+2026-01-08T21:25Z 003-cli-entrypoint-generalist -> starting review for 003-cli-entrypoint-generalist
+2026-01-08T21:25Z 003-cli-entrypoint-generalist -> worker reviewer started
+2026-01-08T21:25Z 004-config-loading-generalist -> worker elapsed generalist: 45s
+2026-01-08T21:25Z 004-config-loading-generalist -> retrying generalist task
+2026-01-08T21:25Z 004-config-loading-generalist -> worker generalist started
