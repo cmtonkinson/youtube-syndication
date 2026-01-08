@@ -43,3 +43,8 @@ helpers that conform to the documented logging conventions.
 ## Assignment
 
 2026-01-08T21:25:00Z [governator]: Assigned to generalist.
+
+## Change Summary
+- Added logging helpers for logfmt events, per-item outcomes, and run summaries.
+- Added preflight checks for yt-dlp and AtomicParsley availability.
+- Wired preflight and run lifecycle logging into yts.sh.

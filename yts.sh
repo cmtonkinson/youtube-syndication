@@ -2,6 +2,12 @@
 
 set -u
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck source=lib/logging.sh
+source "${SCRIPT_DIR}/lib/logging.sh"
+# shellcheck source=lib/preflight.sh
+source "${SCRIPT_DIR}/lib/preflight.sh"
+
 usage() {
   cat <<'EOF'
 Usage: yts.sh [--help]
@@ -36,12 +42,26 @@ import_stage() {
 }
 
 run_stage() {
-  local stage_name="$1"
+  local stage_label="$1"
+  local stage_fn="$2"
 
-  if ! "$stage_name"; then
-    printf 'Stage failed: %s\n' "$stage_name" >&2
+  if ! "${stage_fn}"; then
+    YTS_ABORTED=1
+    log_error_event "stage_failed" "${stage_label}" "stage failed" \
+      "stage=${stage_label}"
     return 1
   fi
+}
+
+on_exit() {
+  local exit_code="$1"
+  if [[ -z "${YTS_RUN_ID:-}" ]]; then
+    return 0
+  fi
+  if [[ "${YTS_SUMMARY_EMITTED:-0}" -eq 1 ]]; then
+    return 0
+  fi
+  emit_run_summary "${exit_code}"
 }
 
 main() {
@@ -59,10 +79,21 @@ main() {
       ;;
   esac
 
-  run_stage sync_stage || return 1
-  run_stage download_stage || return 1
-  run_stage process_stage || return 1
-  run_stage import_stage || return 1
+  init_run_logging
+  trap 'on_exit $?' EXIT
+
+  log_run_start
+
+  preflight_check || return 1
+
+  run_stage sync sync_stage || return 1
+  run_stage download download_stage || return 1
+  run_stage process process_stage || return 1
+  run_stage import import_stage || return 1
+
+  local exit_code
+  exit_code="$(compute_exit_code)"
+  return "${exit_code}"
 }
 
 main "$@"
