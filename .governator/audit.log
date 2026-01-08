@@ -135,3 +135,6 @@
 2026-01-08T21:35Z 004-config-loading-generalist -> worker elapsed generalist: 44s
 2026-01-08T21:35Z 004-config-loading-generalist -> retrying generalist task
 2026-01-08T21:35Z 004-config-loading-generalist -> worker generalist started
+2026-01-08T21:35Z 007-sync-and-filtering-generalist -> worker elapsed generalist: 61s
+2026-01-08T21:36Z 007-sync-and-filtering-generalist -> retrying generalist task
+2026-01-08T21:36Z 007-sync-and-filtering-generalist -> worker generalist started
