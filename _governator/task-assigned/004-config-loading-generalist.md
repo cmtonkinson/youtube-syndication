@@ -38,3 +38,7 @@ configuration schema so pipeline stages can consume consistent inputs.
 =============================================================================
 
 ## Notes
+
+## Assignment
+
+2026-01-08T21:24:57Z [governator]: Assigned to generalist.
