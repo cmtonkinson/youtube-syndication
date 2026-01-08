@@ -21,3 +21,6 @@
 2026-01-08T21:13Z 000-gap-analysis-planner -> retrying planner task
 2026-01-08T21:13Z 000-gap-analysis-planner -> worker planner started
 2026-01-08T21:13Z 000-architecture-bootstrap-architect -> archived to task-archive
+2026-01-08T21:22Z 000-gap-analysis-planner -> worker elapsed planner: 535s
+2026-01-08T21:22Z 000-gap-analysis-planner -> starting review for 000-gap-analysis-planner
+2026-01-08T21:22Z 000-gap-analysis-planner -> worker reviewer started
