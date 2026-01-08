@@ -54,3 +54,7 @@ ordering, naming, and state handling) without downloading real videos.
 
 Blocking condition was an absent worker branch. Requeueing the task without
 changing scope or requirements.
+
+## Assignment
+
+2026-01-08T21:45:26Z [governator]: Assigned to test_engineer.
