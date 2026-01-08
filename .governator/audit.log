@@ -5,3 +5,7 @@
 2026-01-08T21:07Z 000-architecture-bootstrap-architect -> worker elapsed architect: 274s
 2026-01-08T21:07Z 000-architecture-bootstrap-architect -> starting review for 000-architecture-bootstrap-architect
 2026-01-08T21:07Z 000-architecture-bootstrap-architect -> worker reviewer started
+2026-01-08T21:09Z 000-architecture-bootstrap-architect -> recovered reviewer output and pushed branch
+2026-01-08T21:09Z 000-architecture-bootstrap-architect -> worker elapsed reviewer: 106s
+2026-01-08T21:09Z 000-architecture-bootstrap-architect -> review decision: reject
+2026-01-08T21:09Z 000-architecture-bootstrap-architect -> moved to task-assigned

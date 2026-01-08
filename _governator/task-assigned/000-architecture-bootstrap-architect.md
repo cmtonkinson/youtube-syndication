@@ -71,3 +71,11 @@ This task is complete when:
   omitted due to limited component surface.
 - Follow-up concern: confirm configuration schema and logging format during
   implementation planning.
+
+## Review Result
+
+2026-01-08T21:09:11Z [reviewer]: Decision: reject
+2026-01-08T21:09:11Z [reviewer]: Comments:
+2026-01-08T21:09:11Z [reviewer]: - Must fix: The architecture artifacts omit the requirement that source copies of videos may not be kept and only destination copies should remain (GOVERNATOR.md). This needs to be captured as a constraint or ASR because it materially affects storage and pipeline behavior.
+2026-01-08T21:09:11Z [reviewer]: - Must fix: The default skip behavior for shorts and livestreams (GOVERNATOR.md: 'should be skipped by default, if possible') is not reflected in ASRs or arc42 constraints. Please document this default behavior explicitly.
+2026-01-08T21:09:11Z [reviewer]: - Optional: ADR related task references point to _governator/task-assigned/000-architecture-bootstrap-architect.md which does not exist; consider updating to the correct task location for traceability.
