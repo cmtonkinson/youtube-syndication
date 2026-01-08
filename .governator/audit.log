@@ -174,3 +174,5 @@
 2026-01-08T21:42Z 009-metadata-embedding-generalist -> starting review for 009-metadata-embedding-generalist
 2026-01-08T21:42Z 009-metadata-embedding-generalist -> worker reviewer started
 2026-01-08T21:42Z 009-metadata-embedding-generalist -> moved to task-assigned
+2026-01-08T21:42Z 011-core-logic-tests-test_engineer -> worker elapsed test_engineer: 52s
+2026-01-08T21:43Z 011-core-logic-tests-test_engineer -> moved to task-blocked
