@@ -79,3 +79,14 @@ This task is complete when:
 2026-01-08T21:09:11Z [reviewer]: - Must fix: The architecture artifacts omit the requirement that source copies of videos may not be kept and only destination copies should remain (GOVERNATOR.md). This needs to be captured as a constraint or ASR because it materially affects storage and pipeline behavior.
 2026-01-08T21:09:11Z [reviewer]: - Must fix: The default skip behavior for shorts and livestreams (GOVERNATOR.md: 'should be skipped by default, if possible') is not reflected in ASRs or arc42 constraints. Please document this default behavior explicitly.
 2026-01-08T21:09:11Z [reviewer]: - Optional: ADR related task references point to _governator/task-assigned/000-architecture-bootstrap-architect.md which does not exist; consider updating to the correct task location for traceability.
+
+## Change Summary
+- Added an ASR for single-copy storage and clarified default shorts/livestream
+  skipping in ASRs.
+- Updated arc42 constraints to reflect default skip behavior and no-source-copy
+  retention.
+- Updated ADR related task references to the task-worked path.
+- Assumption: Default shorts/livestream detection relies on metadata surfaced
+  by yt-dlp where available.
+- Follow-up concern: confirm reliable shorts/livestream indicators during
+  implementation planning.

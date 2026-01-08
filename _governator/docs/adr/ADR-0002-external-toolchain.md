@@ -34,4 +34,4 @@ Tradeoffs accepted:
 
 - Date: 2026-01-08
 - Related ASRs: ASR-1, ASR-3, ASR-5
-- Related Tasks: _governator/task-assigned/000-architecture-bootstrap-architect.md
+- Related Tasks: _governator/task-worked/000-architecture-bootstrap-architect.md
