@@ -84,3 +84,6 @@
 2026-01-08T21:29Z 001-define-config-schema-architect -> moved to task-assigned
 2026-01-08T21:29Z 001-define-config-schema-architect -> retrying architect task
 2026-01-08T21:29Z 001-define-config-schema-architect -> worker architect started
+2026-01-08T21:30Z 004-config-loading-generalist -> worker elapsed generalist: 70s
+2026-01-08T21:30Z 004-config-loading-generalist -> retrying generalist task
+2026-01-08T21:30Z 004-config-loading-generalist -> worker generalist started
