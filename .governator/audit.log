@@ -181,3 +181,5 @@
 2026-01-08T21:43Z 009-metadata-embedding-generalist -> recovered reviewer output and pushed branch
 2026-01-08T21:43Z 009-metadata-embedding-generalist -> worker elapsed reviewer: 105s
 2026-01-08T21:43Z 009-metadata-embedding-generalist -> moved to task-blocked
+2026-01-08T21:44Z 012-ci-pipeline-devops -> assigned to devops
+2026-01-08T21:44Z 012-ci-pipeline-devops -> worker devops started
