@@ -87,3 +87,8 @@
 2026-01-08T21:30Z 004-config-loading-generalist -> worker elapsed generalist: 70s
 2026-01-08T21:30Z 004-config-loading-generalist -> retrying generalist task
 2026-01-08T21:30Z 004-config-loading-generalist -> worker generalist started
+2026-01-08T21:30Z 006-json-state-store-generalist -> recovered reviewer output and pushed branch
+2026-01-08T21:30Z 007-sync-and-filtering-generalist -> worker elapsed generalist: 61s
+2026-01-08T21:30Z 006-json-state-store-generalist -> worker elapsed reviewer: 60s
+2026-01-08T21:30Z 006-json-state-store-generalist -> review decision: approve
+2026-01-08T21:30Z 006-json-state-store-generalist -> moved to task-done
