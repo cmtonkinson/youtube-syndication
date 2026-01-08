@@ -120,3 +120,6 @@
 2026-01-08T21:34Z 005-preflight-and-logging-generalist -> worker elapsed generalist: 292s
 2026-01-08T21:34Z 005-preflight-and-logging-generalist -> starting review for 005-preflight-and-logging-generalist
 2026-01-08T21:34Z 005-preflight-and-logging-generalist -> worker reviewer started
+2026-01-08T21:34Z 004-config-loading-generalist -> worker elapsed generalist: 68s
+2026-01-08T21:34Z 004-config-loading-generalist -> retrying generalist task
+2026-01-08T21:34Z 004-config-loading-generalist -> worker generalist started
