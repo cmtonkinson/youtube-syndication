@@ -51,3 +51,5 @@
 2026-01-08T21:27Z 003-cli-entrypoint-generalist -> worker elapsed reviewer: 57s
 2026-01-08T21:27Z 003-cli-entrypoint-generalist -> review decision: approve
 2026-01-08T21:27Z 003-cli-entrypoint-generalist -> moved to task-done
+2026-01-08T21:27Z 006-json-state-store-generalist -> assigned to generalist
+2026-01-08T21:27Z 006-json-state-store-generalist -> worker generalist started
