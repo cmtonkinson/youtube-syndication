@@ -43,3 +43,9 @@ usage of the `yts.sh` pipeline.
 ## Assignment
 
 2026-01-08T21:44:52Z [governator]: Assigned to generalist.
+
+## Change Summary
+- Added a README describing dependencies, configuration schema, usage, skip
+  filters, and current vs. target output layouts.
+- Noted that config parsing and some stages are placeholders to match current
+  implementation behavior.
