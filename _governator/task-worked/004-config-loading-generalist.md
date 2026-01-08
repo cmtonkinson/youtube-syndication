@@ -59,3 +59,8 @@ changing scope or requirements.
 ## Assignment
 
 2026-01-08T21:45:24Z [governator]: Assigned to generalist.
+
+## Change Summary
+- Added bash config/subscription loader with defaults, validation, and path setup.
+- Wired input loading into `yts.sh` so stages share parsed configuration.
+- Assumption: blank lines and `#`-prefixed lines in `subscriptions.txt` are ignored.
