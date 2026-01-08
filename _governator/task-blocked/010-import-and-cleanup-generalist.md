@@ -49,3 +49,7 @@ naming and remove staging artifacts so only destination copies remain.
 ## Merge Failure
 
 2026-01-08T21:45:52Z [governator]: Unable to fast-forward merge worker/generalist/010-import-and-cleanup-generalist into main.
+
+## Governator Block
+
+2026-01-08T21:48:48Z [governator]: Missing worker branch origin/worker/generalist/010-import-and-cleanup-generalist for 010-import-and-cleanup-generalist.
