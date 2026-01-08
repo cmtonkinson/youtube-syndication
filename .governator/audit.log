@@ -214,3 +214,5 @@
 2026-01-08T21:46Z 013-readme-documentation-generalist -> moved to task-blocked
 2026-01-08T21:46Z 000-unblock-planner -> worker elapsed reviewer: 86s
 2026-01-08T21:46Z 000-unblock-planner -> moved to task-blocked
+2026-01-08T21:46Z 011-core-logic-tests-test_engineer -> worker elapsed test_engineer: 66s
+2026-01-08T21:46Z 011-core-logic-tests-test_engineer -> moved to task-blocked
