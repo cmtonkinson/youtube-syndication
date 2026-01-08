@@ -1,0 +1,40 @@
+---
+milestone: m1
+epic: e1
+task: 004
+---
+
+# Task: Implement configuration and subscriptions loading
+
+## Objective
+Implement loading and validation of `subscriptions.txt` and the documented
+configuration schema so pipeline stages can consume consistent inputs.
+
+## Context
+- `subscriptions.txt` is the primary input for subscriptions.
+- Configuration schema is defined by Task 001.
+
+## Requirements
+- [ ] Read `subscriptions.txt` as one identifier per line.
+- [ ] Load configuration file(s) per the documented schema and apply defaults.
+- [ ] Validate required fields and fail with clear, actionable errors.
+- [ ] Expose parsed configuration to downstream stages.
+- [ ] Use bash-compatible parsing with no new runtime dependencies.
+
+## Non-Goals
+- Do not define or change the configuration schema.
+- Do not implement filtering, downloads, or metadata embedding.
+
+## Constraints
+- Must follow the schema defined in Task 001.
+- Do not modify `_governator/` files.
+
+## Acceptance Criteria
+- [ ] Subscriptions and configuration load correctly
+- [ ] Invalid or missing inputs produce clear errors
+- [ ] No new runtime dependencies introduced
+
+=============================================================================
+=============================================================================
+
+## Notes
