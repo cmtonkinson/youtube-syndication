@@ -138,3 +138,8 @@
 2026-01-08T21:35Z 007-sync-and-filtering-generalist -> worker elapsed generalist: 61s
 2026-01-08T21:36Z 007-sync-and-filtering-generalist -> retrying generalist task
 2026-01-08T21:36Z 007-sync-and-filtering-generalist -> worker generalist started
+2026-01-08T21:36Z 005-preflight-and-logging-generalist -> recovered reviewer output and pushed branch
+2026-01-08T21:36Z 008-serialized-download-generalist -> worker elapsed generalist: 211s
+2026-01-08T21:36Z 005-preflight-and-logging-generalist -> worker elapsed reviewer: 109s
+2026-01-08T21:36Z 005-preflight-and-logging-generalist -> review decision: approve
+2026-01-08T21:36Z 005-preflight-and-logging-generalist -> moved to task-done

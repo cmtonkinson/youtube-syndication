@@ -48,3 +48,10 @@ helpers that conform to the documented logging conventions.
 - Added logging helpers for logfmt events, per-item outcomes, and run summaries.
 - Added preflight checks for yt-dlp and AtomicParsley availability.
 - Wired preflight and run lifecycle logging into yts.sh.
+
+## Review Result
+
+2026-01-08T21:36:16Z [reviewer]: Decision: approve
+2026-01-08T21:36:16Z [reviewer]: Comments:
+2026-01-08T21:36:16Z [reviewer]: - Preflight checks validate yt-dlp and AtomicParsley, fail fast with a clear error, and use the run summary/exit code conventions.
+2026-01-08T21:36:16Z [reviewer]: - Logging helpers emit logfmt with required field order, route levels to the correct streams, and produce per-item outcomes plus run summaries to stdout and ./run-summary.logfmt.
