@@ -76,3 +76,9 @@
 2026-01-08T21:29Z 005-preflight-and-logging-generalist -> worker generalist started
 2026-01-08T21:29Z 007-sync-and-filtering-generalist -> assigned to generalist
 2026-01-08T21:29Z 007-sync-and-filtering-generalist -> worker generalist started
+2026-01-08T21:29Z 001-define-config-schema-architect -> recovered reviewer output and pushed branch
+2026-01-08T21:29Z 006-json-state-store-generalist -> worker elapsed generalist: 136s
+2026-01-08T21:29Z 006-json-state-store-generalist -> starting review for 006-json-state-store-generalist
+2026-01-08T21:29Z 006-json-state-store-generalist -> worker reviewer started
+2026-01-08T21:29Z 001-define-config-schema-architect -> worker elapsed reviewer: 82s
+2026-01-08T21:29Z 001-define-config-schema-architect -> moved to task-assigned
