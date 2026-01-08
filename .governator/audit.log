@@ -191,3 +191,8 @@
 2026-01-08T21:45Z 008-serialized-download-generalist -> recovered reviewer output and pushed branch
 2026-01-08T21:45Z 012-ci-pipeline-devops -> worker elapsed devops: 38s
 2026-01-08T21:45Z 012-ci-pipeline-devops -> moved to task-blocked
+2026-01-08T21:45Z 000-unblock-planner -> worker elapsed planner: 88s
+2026-01-08T21:45Z 000-unblock-planner -> starting review for 000-unblock-planner
+2026-01-08T21:45Z 000-unblock-planner -> worker reviewer started
+2026-01-08T21:45Z 000-unblock-planner -> review decision: block
+2026-01-08T21:45Z 000-unblock-planner -> moved to task-blocked
