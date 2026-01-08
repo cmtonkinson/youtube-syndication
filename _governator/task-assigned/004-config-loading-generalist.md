@@ -55,3 +55,7 @@ configuration schema so pipeline stages can consume consistent inputs.
 
 Blocking condition was an absent worker branch. Requeueing the task without
 changing scope or requirements.
+
+## Assignment
+
+2026-01-08T21:45:24Z [governator]: Assigned to generalist.
