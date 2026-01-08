@@ -68,3 +68,7 @@ changing scope or requirements.
 ## Review Result
 
 2026-01-08T21:51:00Z [reviewer]: Decision: block
+
+## Governator Block
+
+2026-01-08T21:53:32Z [governator]: Missing worker branch origin/worker/generalist/004-config-loading-generalist for 004-config-loading-generalist.

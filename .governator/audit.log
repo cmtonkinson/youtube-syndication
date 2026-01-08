@@ -227,3 +227,6 @@
 2026-01-08T21:50Z 004-config-loading-generalist -> worker reviewer started
 2026-01-08T21:51Z 004-config-loading-generalist -> review decision: block
 2026-01-08T21:51Z 004-config-loading-generalist -> moved to task-blocked
+2026-01-08T21:53Z 004-config-loading-generalist -> recovered reviewer output and pushed branch
+2026-01-08T21:53Z 004-config-loading-generalist -> worker elapsed reviewer: 150s
+2026-01-08T21:53Z 004-config-loading-generalist -> moved to task-blocked
