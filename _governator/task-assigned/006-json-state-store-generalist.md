@@ -39,3 +39,7 @@ processing status so runs are idempotent and resumable.
 =============================================================================
 
 ## Notes
+
+## Assignment
+
+2026-01-08T21:27:08Z [governator]: Assigned to generalist.
