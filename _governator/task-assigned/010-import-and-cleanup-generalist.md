@@ -45,3 +45,7 @@ naming and remove staging artifacts so only destination copies remain.
 ## Assignment
 
 2026-01-08T21:36:24Z [governator]: Assigned to generalist.
+
+## Merge Failure
+
+2026-01-08T21:45:52Z [governator]: Unable to fast-forward merge worker/generalist/010-import-and-cleanup-generalist into main.
