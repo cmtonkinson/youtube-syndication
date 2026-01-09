@@ -41,24 +41,3 @@ ordering, naming, and state handling) without downloading real videos.
 =============================================================================
 
 ## Notes
-
-## Assignment
-
-2026-01-08T21:41:52Z [governator]: Assigned to test_engineer.
-
-## Governator Block
-
-2026-01-08T21:43:00Z [governator]: Missing worker branch origin/worker/test_engineer/011-core-logic-tests-test_engineer for 011-core-logic-tests-test_engineer.
-
-## Unblock Note
-
-Blocking condition was an absent worker branch. Requeueing the task without
-changing scope or requirements.
-
-## Assignment
-
-2026-01-08T21:45:26Z [governator]: Assigned to test_engineer.
-
-## Governator Block
-
-2026-01-08T21:46:56Z [governator]: Missing worker branch origin/worker/test_engineer/011-core-logic-tests-test_engineer for 011-core-logic-tests-test_engineer.

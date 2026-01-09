@@ -38,26 +38,3 @@ serialized manner and records outcomes in state.
 =============================================================================
 
 ## Notes
-
-## Assignment
-
-2026-01-08T21:30:50Z [governator]: Assigned to generalist.
-
-## Change Summary
-- Implemented serialized download stage using yt-dlp with per-item logging and state updates.
-- Extended state store records to include downloaded video and thumbnail paths.
-- Added skip handling for already downloaded or processed items based on state.
-
-## Review Result
-
-2026-01-08T21:41:40Z [reviewer]: Decision: block
-
-## Unblock Analysis
-
-The reviewer decision did not include a blocking reason or required fixes.
-Without that context, it is not possible to adjust scope or requirements to
-address the issue. Need the specific review rationale or requested changes.
-
-## Governator Block
-
-2026-01-08T21:45:17Z [governator]: Missing worker branch origin/worker/generalist/008-serialized-download-generalist for 008-serialized-download-generalist.

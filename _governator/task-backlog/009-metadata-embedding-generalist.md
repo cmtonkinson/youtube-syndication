@@ -37,15 +37,3 @@ using `AtomicParsley`, producing Plex-ready media.
 =============================================================================
 
 ## Notes
-
-## Assignment
-
-2026-01-08T21:35:24Z [governator]: Assigned to generalist.
-
-## Merge Failure
-
-2026-01-08T21:42:10Z [governator]: Unable to fast-forward merge worker/generalist/009-metadata-embedding-generalist into main.
-
-## Governator Block
-
-2026-01-08T21:43:58Z [governator]: Missing worker branch origin/worker/generalist/009-metadata-embedding-generalist for 009-metadata-embedding-generalist.
