@@ -335,3 +335,7 @@
 2026-01-09T01:17Z 011-core-logic-tests-test_engineer -> worker elapsed test_engineer: 278s
 2026-01-09T01:17Z 011-core-logic-tests-test_engineer -> starting review for 011-core-logic-tests-test_engineer
 2026-01-09T01:17Z 011-core-logic-tests-test_engineer -> worker reviewer started
+2026-01-09T01:19Z 011-core-logic-tests-test_engineer -> recovered reviewer output and pushed branch
+2026-01-09T01:19Z 011-core-logic-tests-test_engineer -> worker elapsed reviewer: 136s
+2026-01-09T01:19Z 011-core-logic-tests-test_engineer -> review decision: approve
+2026-01-09T01:19Z 011-core-logic-tests-test_engineer -> moved to task-done
