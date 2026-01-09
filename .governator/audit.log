@@ -303,3 +303,5 @@
 2026-01-09T00:43Z 013-readme-documentation-generalist -> worker elapsed reviewer: 114s
 2026-01-09T00:43Z 013-readme-documentation-generalist -> review decision: reject
 2026-01-09T00:43Z 013-readme-documentation-generalist -> moved to task-assigned
+2026-01-09T00:43Z 013-readme-documentation-generalist -> retrying generalist task
+2026-01-09T00:43Z 013-readme-documentation-generalist -> worker generalist started
