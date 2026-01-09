@@ -42,3 +42,8 @@ jobs to validate changes automatically.
 ## Assignment
 
 2026-01-09T00:39:32Z [governator]: Assigned to devops.
+
+## Change Summary
+- Added GitHub Actions CI workflow with separate lint and unit test jobs.
+- Introduced bash lint and unit test scripts and documented their usage in the README.
+- Assumption: ShellCheck is acceptable for linting in CI and locally as noted.

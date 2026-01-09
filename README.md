@@ -16,6 +16,22 @@ library layout.
 2. Create `subscriptions.txt` in the repository root.
 3. (Optional) Create `yts.conf` alongside `subscriptions.txt`.
 
+## Development
+
+Lint scripts with:
+```
+./scripts/lint.sh
+```
+
+Run unit tests with:
+```
+./scripts/test.sh
+```
+
+Notes:
+- Linting requires `shellcheck` (install via `brew install shellcheck` or
+  `apt-get install shellcheck`).
+
 ## Configuration
 
 ### subscriptions.txt (required)
