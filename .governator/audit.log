@@ -279,3 +279,7 @@
 2026-01-09T00:36Z 007-sync-and-filtering-generalist -> worker elapsed generalist: 416s
 2026-01-09T00:36Z 007-sync-and-filtering-generalist -> starting review for 007-sync-and-filtering-generalist
 2026-01-09T00:36Z 007-sync-and-filtering-generalist -> worker reviewer started
+2026-01-09T00:39Z 007-sync-and-filtering-generalist -> recovered reviewer output and pushed branch
+2026-01-09T00:39Z 007-sync-and-filtering-generalist -> worker elapsed reviewer: 184s
+2026-01-09T00:39Z 007-sync-and-filtering-generalist -> review decision: approve
+2026-01-09T00:39Z 007-sync-and-filtering-generalist -> moved to task-done

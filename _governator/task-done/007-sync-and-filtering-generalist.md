@@ -51,3 +51,9 @@ computes publish-date ordering, and updates state without downloading media.
 - Implemented sync stage to list metadata with yt-dlp, apply skip filters, and assign deterministic episode ordering.
 - Added sync metadata cache writer and subscription slugging for per-subscription state files.
 - Updated state with pending items and preserved existing statuses while logging outcomes.
+
+## Review Result
+
+2026-01-09T00:39:19Z [reviewer]: Decision: approve
+2026-01-09T00:39:19Z [reviewer]: Comments:
+2026-01-09T00:39:19Z [reviewer]: - Sync uses yt-dlp metadata listing, applies configured skip filters, and assigns deterministic publish-date ordering before updating state and emitting per-subscription metadata for download readiness.
