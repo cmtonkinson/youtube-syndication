@@ -265,3 +265,7 @@
 2026-01-09T00:33Z 010-import-and-cleanup-generalist -> worker elapsed generalist: 234s
 2026-01-09T00:33Z 010-import-and-cleanup-generalist -> starting review for 010-import-and-cleanup-generalist
 2026-01-09T00:33Z 010-import-and-cleanup-generalist -> worker reviewer started
+2026-01-09T00:33Z 004-config-loading-generalist -> recovered reviewer output and pushed branch
+2026-01-09T00:33Z 004-config-loading-generalist -> worker elapsed reviewer: 113s
+2026-01-09T00:33Z 004-config-loading-generalist -> review decision: approve
+2026-01-09T00:33Z 004-config-loading-generalist -> moved to task-done
