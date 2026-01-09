@@ -57,3 +57,8 @@ ordering, naming, and state handling) without downloading real videos.
 2026-01-09T00:53:14Z [reviewer]: Comments:
 2026-01-09T00:53:14Z [reviewer]: - Must fix: tests introduce a Python 3 dependency via inline python scripts in `tests/core_logic_tests.sh`, which violates the project guidance to avoid other languages (`GOVERNATOR.md`) and the task constraint to avoid new test dependencies without explicit approval.
 2026-01-09T00:53:14Z [reviewer]: - Must fix: state store read behavior is not actually exercised because `state_store_read_records` and `state_store_get_status` are overridden in `tests/core_logic_tests.sh`; this bypasses the awk-based parsing logic under test, so the state store read/write behavior is not validated as required.
+
+## Change Summary
+- Removed Python-backed helpers from core logic tests and now use the real state store read/get functions.
+- Parsed sync metadata and state IDs with shell tools only to keep tests dependency-free.
+- Note: tests currently rely on the awk implementation supporting `match(..., ..., array)` from production code.
