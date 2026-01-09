@@ -54,3 +54,6 @@ usage of the `yts.sh` pipeline.
 2026-01-09T00:43:53Z [reviewer]: Decision: reject
 2026-01-09T00:43:53Z [reviewer]: Comments:
 2026-01-09T00:43:53Z [reviewer]: - README.md: The state filename slugging description is inaccurate; slugify preserves '.', '_' and '-' but the doc says all non-alphanumeric characters become '_' (this violates the requirement that documentation match CLI behavior). Please update the wording in README.md to match the actual slugging rules.
+
+## Change Summary
+- Updated README slugging description to match `yts.sh` behavior.
