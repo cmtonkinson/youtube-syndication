@@ -57,3 +57,10 @@ usage of the `yts.sh` pipeline.
 
 ## Change Summary
 - Updated README slugging description to match `yts.sh` behavior.
+
+## Review Result
+
+2026-01-09T00:46:57Z [reviewer]: Decision: approve
+2026-01-09T00:46:57Z [reviewer]: Comments:
+2026-01-09T00:46:57Z [reviewer]: - README.md documents the pipeline stages, configuration, skip filters, and output layout in line with the current yts.sh behavior, including the corrected slugging rule for state files.
+2026-01-09T00:46:57Z [reviewer]: - Optional: consider clarifying the Requirements note about lint/test tooling since scripts/lint.sh depends on shellcheck and scripts/test.sh exists.
