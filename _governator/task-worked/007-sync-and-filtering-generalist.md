@@ -46,3 +46,8 @@ computes publish-date ordering, and updates state without downloading media.
 ## Assignment
 
 2026-01-09T00:28:59Z [governator]: Assigned to generalist.
+
+## Change Summary
+- Implemented sync stage to list metadata with yt-dlp, apply skip filters, and assign deterministic episode ordering.
+- Added sync metadata cache writer and subscription slugging for per-subscription state files.
+- Updated state with pending items and preserved existing statuses while logging outcomes.
