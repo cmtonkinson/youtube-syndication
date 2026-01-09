@@ -6,15 +6,17 @@ library layout.
 ## Requirements
 
 - Bash (macOS/Linux)
-- `yt-dlp` (downloads video + thumbnails)
+- `yt-dlp` (listing, downloading, metadata extraction)
 - `AtomicParsley` (metadata embedding; required by preflight checks)
+- Standard Unix tools: `awk`, `sed`, `sort`, `mktemp`, `grep`
 - Lint/test tooling: none defined yet in this repository.
 
 ## Setup
 
 1. Install dependencies (`yt-dlp`, `AtomicParsley`).
 2. Create `subscriptions.txt` in the repository root.
-3. (Optional) Create `yts.conf` alongside `subscriptions.txt`.
+3. (Optional) Create `yts.conf` alongside `subscriptions.txt` (or set
+   `YTS_CONFIG` to point elsewhere).
 
 ## Configuration
 
@@ -22,6 +24,7 @@ library layout.
 
 - Location: repository root (same directory as `yts.sh`).
 - Format: one YouTube identifier per line (channel or playlist).
+- Blank lines and lines starting with `#` are ignored.
 
 Example:
 ```
@@ -29,7 +32,7 @@ https://www.youtube.com/@DoshDoshington
 https://www.youtube.com/playlist?list=PLxyz123
 ```
 
-### yts.conf (optional, schema documented)
+### yts.conf (optional)
 
 Configuration is defined in `_governator/docs/configuration.md`. The schema is
 bash-friendly `KEY=VALUE` pairs with defaults:
@@ -49,16 +52,14 @@ STATE_DIR=./state
 ```
 
 Notes:
-- The config file format and defaults are documented, but parsing is not wired
-  into `yts.sh` yet. The current script only reads `STATE_DIR`/`STAGING_DIR`
-  from environment variables.
-- When filtering is implemented, skip defaults are:
-  shorts/livestreams skipped, size/duration limits disabled (`0`), and an empty
-  title regex disables the filter.
+- The file is optional; defaults apply when it is missing.
+- Relative paths are resolved from the directory containing `yts.conf`.
+- `LIBRARY_DIR`, `STAGING_DIR`, and `STATE_DIR` must be distinct writable
+  directories.
 
 ## Usage
 
-Run the full pipeline:
+Run the full pipeline (sync -> download -> process -> import):
 ```
 ./yts.sh
 ```
@@ -68,29 +69,44 @@ Show help:
 ./yts.sh --help
 ```
 
-Current stage behavior:
-- `sync`: placeholder (no-op)
-- `download`: implemented; pulls videos listed in state files
-- `process`: placeholder (no-op)
-- `import`: placeholder (no-op)
+Run with an alternate config file:
+```
+YTS_CONFIG=/path/to/yts.conf ./yts.sh
+```
 
-The download stage expects JSON state files in `STATE_DIR` (default `./state`).
-Each file represents a subscription and contains per-video records. If the
-state directory or files are missing, downloads are skipped.
+Stage behavior:
+- `sync`: lists each subscription with `yt-dlp`, applies skip filters, writes
+  JSON state and metadata cache files under `STATE_DIR`.
+- `download`: downloads pending items into `STAGING_DIR/<subscription>/` using
+  `yt-dlp` and updates state with file paths.
+- `process`: ensures `.info.json` metadata exists (fetches if missing) and
+  embeds title/artist/description/artwork into the mp4 with `AtomicParsley`.
+- `import`: moves processed mp4/jpg files into the Plex library layout under
+  `LIBRARY_DIR`, naming files as `Name - S01E## - Title`.
 
-## Skip Filters (planned)
+## Skip Filters (sync stage)
 
-These filters are configured via `yts.conf` and will be applied by the `sync`
-stage once implemented:
-- Shorts: skipped by default (`SKIP_SHORTS=true`)
-- Livestreams: skipped by default (`SKIP_LIVESTREAMS=true`)
+These filters are configured via `yts.conf` and applied during `sync`:
+- Shorts: skipped when `SKIP_SHORTS=true` (shorts are <= 60s)
+- Livestreams: skipped when `SKIP_LIVESTREAMS=true`
 - Size limit: `MAX_SIZE_MB` (MiB), `0` disables
 - Duration limit: `MAX_DURATION_MIN` (minutes), `0` disables
 - Title pattern: `TITLE_SKIP_REGEX` (bash ERE), empty disables
 
 ## Output Layout
 
-### Staging (current download output)
+### State (sync output)
+
+Sync writes one JSON state file per subscription plus a metadata cache. The
+file name is a slugged version of the subscription string (non-alphanumeric
+characters become `_`):
+```
+state/
+  <subscription>.json
+  <subscription>.metadata.json
+```
+
+### Staging (download/process output)
 
 Downloads are written under `STAGING_DIR` (default `./staging`):
 ```
@@ -98,16 +114,18 @@ staging/
   <subscription>/
     <video_id>.mp4
     <video_id>.jpg
+    <video_id>.info.json
 ```
 
 ### Plex Library (target layout)
 
-When `import` is implemented, videos will be placed in `LIBRARY_DIR` (default
-`./youtube`) using Plex TV naming rules:
+Videos are placed in `LIBRARY_DIR` (default `./youtube`) using Plex TV naming
+rules:
 ```
 youtube/
   ChannelName/
     ChannelName - S01E01 - Video Title.mp4
+    ChannelName - S01E01 - Video Title.jpg
 ```
 
 Rules:

@@ -43,3 +43,8 @@ usage of the `yts.sh` pipeline.
 ## Assignment
 
 2026-01-09T00:39:35Z [governator]: Assigned to generalist.
+
+## Change Summary
+- Updated README to reflect current pipeline stages, configuration, and output
+  layout (including state files, staging, and Plex naming).
+- Added usage example for custom config path and clarified skip filter defaults.
