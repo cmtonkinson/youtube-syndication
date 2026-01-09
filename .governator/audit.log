@@ -262,3 +262,6 @@
 2026-01-09T00:31Z 008-serialized-download-generalist -> worker elapsed reviewer: 71s
 2026-01-09T00:31Z 008-serialized-download-generalist -> review decision: approve
 2026-01-09T00:31Z 008-serialized-download-generalist -> moved to task-done
+2026-01-09T00:33Z 010-import-and-cleanup-generalist -> worker elapsed generalist: 234s
+2026-01-09T00:33Z 010-import-and-cleanup-generalist -> starting review for 010-import-and-cleanup-generalist
+2026-01-09T00:33Z 010-import-and-cleanup-generalist -> worker reviewer started
