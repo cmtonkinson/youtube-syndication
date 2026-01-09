@@ -82,3 +82,6 @@ changing scope or requirements.
 2026-01-09T00:27:17Z [governator]: 011
 2026-01-09T00:27:17Z [governator]: 012
 2026-01-09T00:27:17Z [governator]: 013
+
+## Change Summary
+- Enforced quoting rules for config values containing whitespace.

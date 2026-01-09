@@ -161,13 +161,20 @@ load_config() {
         return 1
       fi
 
+      local was_quoted=0
       if [[ "${value}" == \"*\" || "${value}" == *\" ]]; then
         if [[ "${value}" == \"*\" && "${value}" == *\" && "${#value}" -ge 2 ]]; then
           value="${value:1:${#value}-2}"
+          was_quoted=1
         else
           config_error "invalid quoted value" "line=${line_num}" "key=${key}"
           return 1
         fi
+      fi
+
+      if [[ "${was_quoted}" -eq 0 && "${value}" == *[[:space:]]* ]]; then
+        config_error "unquoted value contains whitespace" "line=${line_num}" "key=${key}"
+        return 1
       fi
 
       case "${key}" in
