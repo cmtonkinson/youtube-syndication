@@ -50,3 +50,10 @@ ordering, naming, and state handling) without downloading real videos.
 - Added bash-based core logic tests with lightweight fixtures for subscription/config parsing, filtering, publish ordering/episode numbering, naming sanitization, and state store behavior.
 - Introduced a simple test runner plus Python-backed parsing in tests to keep checks deterministic without network calls.
 - Assumptions: Python 3 is available in the test environment for JSON parsing within the test harness.
+
+## Review Result
+
+2026-01-09T00:53:14Z [reviewer]: Decision: reject
+2026-01-09T00:53:14Z [reviewer]: Comments:
+2026-01-09T00:53:14Z [reviewer]: - Must fix: tests introduce a Python 3 dependency via inline python scripts in `tests/core_logic_tests.sh`, which violates the project guidance to avoid other languages (`GOVERNATOR.md`) and the task constraint to avoid new test dependencies without explicit approval.
+2026-01-09T00:53:14Z [reviewer]: - Must fix: state store read behavior is not actually exercised because `state_store_read_records` and `state_store_get_status` are overridden in `tests/core_logic_tests.sh`; this bypasses the awk-based parsing logic under test, so the state store read/write behavior is not validated as required.
