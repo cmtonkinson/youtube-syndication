@@ -320,3 +320,6 @@
 2026-01-09T00:53Z 011-core-logic-tests-test_engineer -> moved to task-assigned
 2026-01-09T00:53Z 011-core-logic-tests-test_engineer -> retrying test_engineer task
 2026-01-09T00:53Z 011-core-logic-tests-test_engineer -> worker test_engineer started
+2026-01-09T01:01Z 011-core-logic-tests-test_engineer -> worker elapsed test_engineer: 478s
+2026-01-09T01:01Z 011-core-logic-tests-test_engineer -> retrying test_engineer task
+2026-01-09T01:01Z 011-core-logic-tests-test_engineer -> worker test_engineer started
