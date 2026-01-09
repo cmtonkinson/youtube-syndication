@@ -114,8 +114,8 @@ These filters are configured via `yts.conf` and applied during `sync`:
 ### State (sync output)
 
 Sync writes one JSON state file per subscription plus a metadata cache. The
-file name is a slugged version of the subscription string (non-alphanumeric
-characters become `_`):
+file name is a slugged version of the subscription string (characters outside
+`A-Za-z0-9._-` become `_`):
 ```
 state/
   <subscription>.json
