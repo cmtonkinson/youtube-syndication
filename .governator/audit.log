@@ -231,3 +231,21 @@
 2026-01-08T21:53Z 004-config-loading-generalist -> worker elapsed reviewer: 150s
 2026-01-08T21:53Z 004-config-loading-generalist -> moved to task-blocked
 2026-01-09T00:26Z governator -> update applied: updated _governator/lib/branches.sh, updated _governator/lib/internal.sh, updated _governator/lib/queues.sh, updated _governator/lib/status.sh, updated _governator/lib/tasks.sh, updated _governator/templates/task.md
+2026-01-09T00:27Z 004-config-loading-generalist -> moved to task-assigned
+2026-01-09T00:28Z 007-sync-and-filtering-generalist -> restarted by operator
+2026-01-09T00:28Z 008-serialized-download-generalist -> restarted by operator
+2026-01-09T00:28Z 009-metadata-embedding-generalist -> restarted by operator
+2026-01-09T00:28Z 010-import-and-cleanup-generalist -> restarted by operator
+2026-01-09T00:28Z 011-core-logic-tests-test_engineer -> restarted by operator
+2026-01-09T00:28Z 012-ci-pipeline-devops -> restarted by operator
+2026-01-09T00:28Z 013-readme-documentation-generalist -> restarted by operator
+2026-01-09T00:28Z 004-config-loading-generalist -> retrying generalist task
+2026-01-09T00:28Z 004-config-loading-generalist -> worker generalist started
+2026-01-09T00:28Z 007-sync-and-filtering-generalist -> assigned to generalist
+2026-01-09T00:29Z 007-sync-and-filtering-generalist -> worker generalist started
+2026-01-09T00:29Z 008-serialized-download-generalist -> assigned to generalist
+2026-01-09T00:29Z 008-serialized-download-generalist -> worker generalist started
+2026-01-09T00:29Z 009-metadata-embedding-generalist -> assigned to generalist
+2026-01-09T00:29Z 009-metadata-embedding-generalist -> worker generalist started
+2026-01-09T00:29Z 010-import-and-cleanup-generalist -> assigned to generalist
+2026-01-09T00:29Z 010-import-and-cleanup-generalist -> worker generalist started
