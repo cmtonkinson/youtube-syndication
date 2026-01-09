@@ -269,3 +269,6 @@
 2026-01-09T00:33Z 004-config-loading-generalist -> worker elapsed reviewer: 113s
 2026-01-09T00:33Z 004-config-loading-generalist -> review decision: approve
 2026-01-09T00:33Z 004-config-loading-generalist -> moved to task-done
+2026-01-09T00:33Z 009-metadata-embedding-generalist -> worker elapsed reviewer: 92s
+2026-01-09T00:33Z 009-metadata-embedding-generalist -> review decision: approve
+2026-01-09T00:33Z 009-metadata-embedding-generalist -> moved to task-done
