@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-set -u
-if [[ -n "${YTS_TEST_YTDLP_OUTPUT_FILE:-}" ]]; then
-  cat "${YTS_TEST_YTDLP_OUTPUT_FILE}"
-  exit 0
-fi
-exit 0

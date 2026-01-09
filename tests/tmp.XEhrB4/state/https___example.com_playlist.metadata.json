@@ -1,8 +1,0 @@
-{
-  "version": 1,
-  "records": [
-    {"id":"vid_a","title":"First Video","published_at":"20240101","duration_s":120,"size_bytes":1000,"episode":1},
-    {"id":"vid_b","title":"Second Video","published_at":"20240102","duration_s":120,"size_bytes":1000,"episode":2},
-    {"id":"vid_c","title":"Third Video","published_at":"20240103","duration_s":120,"size_bytes":1000,"episode":3}
-  ]
-}

@@ -1,7 +1,0 @@
-{
-  "version": 1,
-  "records": [
-    {"id":"vid1","published_at":"20240101","status":"downloaded","video_path":"","thumbnail_path":""},
-    {"id":"vid2","published_at":"20240102","status":"processed","video_path":"/tmp/video.mp4","thumbnail_path":"/tmp/video.jpg"}
-  ]
-}

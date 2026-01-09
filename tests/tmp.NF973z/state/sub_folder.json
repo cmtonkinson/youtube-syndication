@@ -1,6 +1,0 @@
-{
-  "version": 1,
-  "records": [
-    {"id":"vid123","published_at":"2024-01-01T00:00:00Z","status":"processed","video_path":"/tmp/governator-youtube-syndication2-test_engineer-011-core-logic-tests-test_engineer-7AD2dV/tests/tmp.NF973z/staging/sub_folder/vid123.mp4","thumbnail_path":"/tmp/governator-youtube-syndication2-test_engineer-011-core-logic-tests-test_engineer-7AD2dV/tests/tmp.NF973z/staging/sub_folder/vid123.jpg"}
-  ]
-}

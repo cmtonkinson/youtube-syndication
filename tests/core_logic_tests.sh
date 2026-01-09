@@ -129,7 +129,7 @@ run_test() {
 
 make_temp_dir() {
   local dir
-  dir="$(mktemp -d "${ROOT_DIR}/tests/tmp.XXXXXX")"
+  dir="$(mktemp -d "${TMPDIR:-/tmp}/yts-tests.XXXXXX")"
   TEMP_DIRS+=("${dir}")
   printf '%s' "${dir}"
 }
