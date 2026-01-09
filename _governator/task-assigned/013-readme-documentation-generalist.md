@@ -39,3 +39,7 @@ usage of the `yts.sh` pipeline.
 =============================================================================
 
 ## Notes
+
+## Assignment
+
+2026-01-09T00:39:35Z [governator]: Assigned to generalist.
