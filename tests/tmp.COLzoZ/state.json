@@ -1,0 +1,6 @@
+{
+  "version": 1,
+  "records": [
+    {"id":"vid1","published_at":"20240101","status":"downloaded","video_path":"","thumbnail_path":""}
+  ]
+}

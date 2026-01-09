@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "records": [
+    {"id":"vid_a","published_at":"20240101","status":"pending","video_path":"","thumbnail_path":""},
+    {"id":"vid_b","published_at":"20240102","status":"pending","video_path":"","thumbnail_path":""},
+    {"id":"vid_c","published_at":"20240103","status":"pending","video_path":"","thumbnail_path":""}
+  ]
+}

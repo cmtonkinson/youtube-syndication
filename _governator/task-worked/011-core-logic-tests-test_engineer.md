@@ -45,3 +45,8 @@ ordering, naming, and state handling) without downloading real videos.
 ## Assignment
 
 2026-01-09T00:39:29Z [governator]: Assigned to test_engineer.
+
+## Change Summary
+- Added bash-based core logic tests with lightweight fixtures for subscription/config parsing, filtering, publish ordering/episode numbering, naming sanitization, and state store behavior.
+- Introduced a simple test runner plus Python-backed parsing in tests to keep checks deterministic without network calls.
+- Assumptions: Python 3 is available in the test environment for JSON parsing within the test harness.
