@@ -45,3 +45,8 @@ naming and remove staging artifacts so only destination copies remain.
 ## Assignment
 
 2026-01-09T00:29:07Z [governator]: Assigned to generalist.
+
+## Change Summary
+- Implemented import stage to name/move processed media into the Plex library, handle collisions, and clean staging artifacts.
+- Added metadata lookup and filename sanitization helpers to drive channel/title naming and episode ordering by publish date.
+- Assumed yt-dlp metadata is available via .info.json near processed files; fallback uses subscription/video id when missing.
