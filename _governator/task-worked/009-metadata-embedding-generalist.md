@@ -41,3 +41,8 @@ using `AtomicParsley`, producing Plex-ready media.
 ## Assignment
 
 2026-01-09T00:29:05Z [governator]: Assigned to generalist.
+
+## Change Summary
+- Added process-stage metadata embedding via AtomicParsley.
+- Read yt-dlp info JSON for title/description/channel with fallbacks.
+- Marked processed/failed states with updated paths and outcomes.
