@@ -249,3 +249,6 @@
 2026-01-09T00:29Z 009-metadata-embedding-generalist -> worker generalist started
 2026-01-09T00:29Z 010-import-and-cleanup-generalist -> assigned to generalist
 2026-01-09T00:29Z 010-import-and-cleanup-generalist -> worker generalist started
+2026-01-09T00:30Z 008-serialized-download-generalist -> worker elapsed generalist: 83s
+2026-01-09T00:30Z 008-serialized-download-generalist -> starting review for 008-serialized-download-generalist
+2026-01-09T00:30Z 008-serialized-download-generalist -> worker reviewer started
