@@ -21,60 +21,6 @@ source <(sed \
   -e '/^main "\$@"/,$d' \
   "${ROOT_DIR}/yts.sh")
 
-# Override awk-dependent helpers for test portability.
-state_store_read_records() {
-  local file="$1"
-
-  if [[ ! -s "${file}" ]]; then
-    return 0
-  fi
-
-  python3 - "${file}" <<'PY'
-import json, sys
-
-path = sys.argv[1]
-with open(path, "r", encoding="utf-8") as fh:
-    payload = json.load(fh)
-
-for record in payload.get("records", []):
-    fields = [
-        record.get("id", ""),
-        record.get("published_at", ""),
-        record.get("status", ""),
-        record.get("video_path", ""),
-        record.get("thumbnail_path", ""),
-    ]
-    print("\t".join(fields))
-PY
-}
-
-state_store_get_status() {
-  local file="$1"
-  local lookup_id="$2"
-
-  local status
-  status="$(python3 - "${file}" "${lookup_id}" <<'PY'
-import json, sys
-
-path = sys.argv[1]
-lookup = sys.argv[2]
-try:
-    with open(path, "r", encoding="utf-8") as fh:
-        payload = json.load(fh)
-except FileNotFoundError:
-    sys.exit(1)
-
-for record in payload.get("records", []):
-    if record.get("id") == lookup:
-        print(record.get("status", ""))
-        sys.exit(0)
-sys.exit(1)
-PY
-)" || return 1
-
-  printf '%s' "${status}"
-}
-
 failures=0
 TEMP_DIRS=()
 
@@ -210,17 +156,7 @@ EOF
 
   local state_file="${STATE_DIR}/https___example.com_channel.json"
   local ids
-  ids="$(python3 - "${state_file}" <<'PY'
-import json, sys
-
-path = sys.argv[1]
-with open(path, "r", encoding="utf-8") as fh:
-    payload = json.load(fh)
-
-for record in payload.get("records", []):
-    print(record.get("id", ""))
-PY
-)"
+  ids="$(state_store_read_records "${state_file}" | awk -F'\t' '{print $1}')"
   if ! printf '%s\n' "${ids}" | grep -q "^vid_ok$"; then
     fail "expected vid_ok to remain after filtering"
     return 1
@@ -281,17 +217,17 @@ EOF
   assert_file_exists "${metadata_file}" "metadata file exists" || return 1
 
   local episode_map
-  episode_map="$(python3 - "${metadata_file}" <<'PY'
-import json, sys
-
-path = sys.argv[1]
-with open(path, "r", encoding="utf-8") as fh:
-    payload = json.load(fh)
-
-for record in payload.get("records", []):
-    print(f"{record.get('id','')}\t{record.get('episode','')}")
-PY
-)"
+  episode_map="$(awk -F'"' '
+    /"id":/ {
+      id = $4
+      if (match($0, /"episode":[0-9]+/)) {
+        ep = $0
+        sub(/.*"episode":/, "", ep)
+        sub(/[^0-9].*/, "", ep)
+        print id "\t" ep
+      }
+    }
+  ' "${metadata_file}")"
 
   local ep_a
   ep_a="$(printf '%s\n' "${episode_map}" | sed -n 's/^vid_a\t//p')"
@@ -338,31 +274,11 @@ test_state_store_read_write() {
   state_store_upsert_record "${store}" "vid1" "20240101" "downloaded" "" "" || return 1
 
   local status_vid1
-  status_vid1="$(python3 - "${store}" <<'PY'
-import json, sys
-
-path = sys.argv[1]
-with open(path, "r", encoding="utf-8") as fh:
-    payload = json.load(fh)
-
-records = {rec.get("id"): rec for rec in payload.get("records", [])}
-print(records.get("vid1", {}).get("status", ""))
-PY
-)"
+  status_vid1="$(state_store_get_status "${store}" "vid1")" || return 1
   assert_eq "downloaded" "${status_vid1}" "state store update overwrites status" || return 1
 
   local status_vid2
-  status_vid2="$(python3 - "${store}" <<'PY'
-import json, sys
-
-path = sys.argv[1]
-with open(path, "r", encoding="utf-8") as fh:
-    payload = json.load(fh)
-
-records = {rec.get("id"): rec for rec in payload.get("records", [])}
-print(records.get("vid2", {}).get("status", ""))
-PY
-)"
+  status_vid2="$(state_store_get_status "${store}" "vid2")" || return 1
   assert_eq "processed" "${status_vid2}" "state store read for processed status" || return 1
 }
 
