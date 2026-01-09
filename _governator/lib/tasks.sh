@@ -56,6 +56,316 @@ task_label() {
   fi
 }
 
+# frontmatter_value
+# Purpose: Extract a YAML frontmatter value from a task file.
+# Args:
+#   $1: Task file path (string).
+#   $2: Key name (string).
+# Output: Prints the value when present.
+# Returns: 0 always.
+frontmatter_value() {
+  local file="$1"
+  local key="$2"
+  awk -v want="${key}" '
+    NR == 1 && $0 == "---" { in_frontmatter=1; next }
+    in_frontmatter == 1 {
+      if ($0 == "---") exit
+      if ($0 ~ /^[A-Za-z0-9_-]+:[[:space:]]*/) {
+        split($0, parts, ":")
+        k = parts[1]
+        v = substr($0, index($0, ":") + 1)
+        sub(/^[ \t]+/, "", v)
+        sub(/[ \t]+$/, "", v)
+        if (k == want) { print v; exit }
+      }
+    }
+  ' "${file}"
+}
+
+# frontmatter_list
+# Purpose: Extract a YAML frontmatter list value into one entry per line.
+# Args:
+#   $1: Task file path (string).
+#   $2: Key name (string).
+# Output: Prints list entries, one per line.
+# Returns: 0 always.
+frontmatter_list() {
+  local file="$1"
+  local key="$2"
+  local raw
+  raw="$(
+    awk -v want="${key}" '
+      NR == 1 && $0 == "---" { in_frontmatter=1; next }
+      in_frontmatter == 1 {
+        if ($0 == "---") exit
+        if (!found) {
+          if ($0 ~ ("^" want ":[[:space:]]*")) {
+            found=1
+            value=$0
+            sub("^" want ":[[:space:]]*", "", value)
+            if (value == "") {
+              list_mode=1
+              next
+            }
+            print value
+            exit
+          }
+        } else if (list_mode) {
+          if ($0 ~ /^[[:space:]]*-[[:space:]]*/) {
+            item=$0
+            sub(/^[[:space:]]*-[[:space:]]*/, "", item)
+            print item
+            next
+          }
+          exit
+        }
+      }
+    ' "${file}"
+  )"
+  if [[ -z "${raw}" ]]; then
+    return 0
+  fi
+  printf '%s\n' "${raw}" | awk '
+    {
+      line=$0
+      gsub(/^\[/, "", line)
+      gsub(/\]$/, "", line)
+      count=split(line, parts, ",")
+      for (i=1; i<=count; i++) {
+        item=parts[i]
+        gsub(/^[ \t]+/, "", item)
+        gsub(/[ \t]+$/, "", item)
+        if (item ~ /^".*"$/ || item ~ /^'\''.*'\''$/) {
+          item=substr(item, 2, length(item) - 2)
+        }
+        if (item != "") print item
+      }
+    }
+  '
+}
+
+# normalize_dependency_id
+# Purpose: Normalize dependency ids to a zero-padded task id.
+# Args:
+#   $1: Dependency id (string).
+# Output: Prints normalized id to stdout.
+# Returns: 0 if id is numeric; 1 otherwise.
+normalize_dependency_id() {
+  local dep_id="$1"
+  if [[ -z "${dep_id}" || ! "${dep_id}" =~ ^[0-9]+$ ]]; then
+    return 1
+  fi
+  printf '%03d' "${dep_id}"
+}
+
+# task_dependency_ids
+# Purpose: Extract numeric dependency ids from task frontmatter.
+# Args:
+#   $1: Task file path (string).
+# Output: Prints dependency ids, one per line.
+# Returns: 0 always.
+task_dependency_ids() {
+  local task_file="$1"
+  local raw
+  while IFS= read -r raw; do
+    if dep_id="$(normalize_dependency_id "${raw}")"; then
+      printf '%s\n' "${dep_id}"
+    fi
+  done < <(frontmatter_list "${task_file}" "depends_on")
+}
+
+# task_dependency_done
+# Purpose: Check if a dependency id has a matching done task.
+# Args:
+#   $1: Dependency id (string).
+# Output: None.
+# Returns: 0 if a matching task is done; 1 otherwise.
+task_dependency_done() {
+  local dep_id="$1"
+  if compgen -G "${STATE_DIR}/task-done/${dep_id}-*.md" > /dev/null; then
+    return 0
+  fi
+  return 1
+}
+
+# task_id_exists
+# Purpose: Check if any task file exists for a numeric id prefix.
+# Args:
+#   $1: Dependency id (string).
+# Output: None.
+# Returns: 0 if any task exists; 1 otherwise.
+task_id_exists() {
+  local dep_id="$1"
+  if find_task_files "${dep_id}-*" | grep -q .; then
+    return 0
+  fi
+  return 1
+}
+
+# task_dependencies_satisfied
+# Purpose: Determine whether all dependencies for a task are done.
+# Args:
+#   $1: Task file path (string).
+# Output: Prints a blocking reason when dependencies are missing or incomplete.
+# Returns: 0 if all dependencies are satisfied; 1 otherwise.
+task_dependencies_satisfied() {
+  local task_file="$1"
+  local missing=()
+  local incomplete=()
+  local dep_id
+  while IFS= read -r dep_id; do
+    if task_dependency_done "${dep_id}"; then
+      continue
+    fi
+    if task_id_exists "${dep_id}"; then
+      incomplete+=("${dep_id}")
+    else
+      missing+=("${dep_id}")
+    fi
+  done < <(task_dependency_ids "${task_file}")
+
+  if [[ "${#missing[@]}" -eq 0 && "${#incomplete[@]}" -eq 0 ]]; then
+    return 0
+  fi
+  if [[ "${#missing[@]}" -gt 0 ]]; then
+    printf 'Depends on missing task id(s): %s.' "${missing[*]}"
+    return 1
+  fi
+  printf 'Depends on incomplete task id(s): %s.' "${incomplete[*]}"
+  return 1
+}
+
+# list_milestone_ids
+# Purpose: List unique milestone ids from task frontmatter.
+# Args: None.
+# Output: Prints milestone ids, one per line.
+# Returns: 0 always.
+list_milestone_ids() {
+  local task_file
+  local -A seen=()
+  while IFS= read -r task_file; do
+    local task_name
+    task_name="$(basename "${task_file}" .md)"
+    if [[ "${task_name}" == 000-* ]]; then
+      continue
+    fi
+    local milestone
+    milestone="$(frontmatter_value "${task_file}" "milestone")"
+    if [[ -z "${milestone}" ]]; then
+      continue
+    fi
+    if [[ -z "${seen[${milestone}]+x}" ]]; then
+      seen["${milestone}"]=1
+      printf '%s\n' "${milestone}"
+    fi
+  done < <(
+    list_task_files_in_dir "${STATE_DIR}/task-backlog"
+    list_task_files_in_dir "${STATE_DIR}/task-assigned"
+    list_task_files_in_dir "${STATE_DIR}/task-worked"
+    list_task_files_in_dir "${STATE_DIR}/task-blocked"
+    list_task_files_in_dir "${STATE_DIR}/task-done"
+  )
+}
+
+# sorted_milestone_ids
+# Purpose: Sort milestone ids with numeric order for M-number patterns.
+# Args: None.
+# Output: Prints sorted milestone ids, one per line.
+# Returns: 0 always.
+sorted_milestone_ids() {
+  list_milestone_ids | awk '
+    {
+      id=$0
+      if (id ~ /^M[0-9]+$/) {
+        num=substr(id, 2) + 0
+        printf "0|%010d|%s\n", num, id
+      } else {
+        printf "1|%s|%s\n", id, id
+      }
+    }
+  ' | sort -t '|' -k1,1 -k2,2 | cut -d '|' -f3
+}
+
+# milestone_is_complete
+# Purpose: Check whether all tasks for a milestone are in task-done.
+# Args:
+#   $1: Milestone id (string).
+# Output: None.
+# Returns: 0 if complete; 1 if any task is incomplete.
+milestone_is_complete() {
+  local milestone="$1"
+  local task_file
+  while IFS= read -r task_file; do
+    local task_name
+    task_name="$(basename "${task_file}" .md)"
+    if [[ "${task_name}" == 000-* ]]; then
+      continue
+    fi
+    local current
+    current="$(frontmatter_value "${task_file}" "milestone")"
+    if [[ "${current}" != "${milestone}" ]]; then
+      continue
+    fi
+    local dir
+    dir="$(basename "$(dirname "${task_file}")")"
+    if [[ "${dir}" != "task-done" ]]; then
+      return 1
+    fi
+  done < <(
+    list_task_files_in_dir "${STATE_DIR}/task-backlog"
+    list_task_files_in_dir "${STATE_DIR}/task-assigned"
+    list_task_files_in_dir "${STATE_DIR}/task-worked"
+    list_task_files_in_dir "${STATE_DIR}/task-blocked"
+    list_task_files_in_dir "${STATE_DIR}/task-done"
+  )
+  return 0
+}
+
+# earliest_incomplete_milestone
+# Purpose: Return the earliest milestone id that is not complete.
+# Args: None.
+# Output: Prints the milestone id when present.
+# Returns: 0 always.
+earliest_incomplete_milestone() {
+  local milestone
+  while IFS= read -r milestone; do
+    if ! milestone_is_complete "${milestone}"; then
+      printf '%s\n' "${milestone}"
+      return 0
+    fi
+  done < <(sorted_milestone_ids)
+}
+
+# milestone_gate_allows_task
+# Purpose: Enforce sequential milestone dispatch for a task.
+# Args:
+#   $1: Task file path (string).
+#   $2: Active milestone id (string, optional).
+# Output: Prints a blocking reason when the task is outside the active milestone.
+# Returns: 0 if task is eligible; 1 otherwise.
+milestone_gate_allows_task() {
+  local task_file="$1"
+  local active_milestone="$2"
+  if [[ -z "${active_milestone}" ]]; then
+    return 0
+  fi
+  local task_name
+  task_name="$(basename "${task_file}" .md)"
+  if [[ "${task_name}" == 000-* ]]; then
+    return 0
+  fi
+  local milestone
+  milestone="$(frontmatter_value "${task_file}" "milestone")"
+  if [[ -z "${milestone}" ]]; then
+    return 0
+  fi
+  if [[ "${milestone}" == "${active_milestone}" ]]; then
+    return 0
+  fi
+  printf 'Milestone %s is not active (current %s).' "${milestone}" "${active_milestone}"
+  return 1
+}
+
 # extract_block_reason
 # Purpose: Extract the block reason from a task file.
 # Args:
@@ -396,6 +706,208 @@ unblock_task() {
 
   git -C "${ROOT_DIR}" add "${STATE_DIR}"
   git -C "${ROOT_DIR}" commit -q -m "[governator] Unblock task ${task_name}"
+  git_push_default_branch
+}
+
+# truncate_task_notes
+# Purpose: Truncate a task file to the Notes section heading.
+# Args:
+#   $1: Task file path (string).
+# Output: None.
+# Returns: 0 on success.
+truncate_task_notes() {
+  local task_file="$1"
+  if [[ -z "${task_file}" || ! -f "${task_file}" ]]; then
+    return 0
+  fi
+  local tmp_file
+  tmp_file="$(mktemp "${task_file}.tmp.XXXXXX")"
+  awk '
+    { print }
+    $0 ~ /^## Notes[[:space:]]*$/ { exit }
+  ' "${task_file}" > "${tmp_file}"
+  mv "${tmp_file}" "${task_file}"
+}
+
+# restart_cleanup_worker
+# Purpose: Stop a worker process and clean up artifacts for a task.
+# Args:
+#   $1: Task name (string).
+#   $2: Worker name (string).
+# Output: None.
+# Returns: 0 on completion.
+restart_cleanup_worker() {
+  local task_name="$1"
+  local worker="$2"
+  if [[ -z "${task_name}" || -z "${worker}" ]]; then
+    return 0
+  fi
+
+  local worker_info=()
+  local pid=""
+  local tmp_dir=""
+  local branch=""
+  if mapfile -t worker_info < <(worker_process_get "${task_name}" "${worker}" 2> /dev/null); then
+    pid="${worker_info[0]:-}"
+    tmp_dir="${worker_info[1]:-}"
+    branch="${worker_info[2]:-}"
+  fi
+
+  if [[ -n "${pid}" ]]; then
+    if kill -0 "${pid}" > /dev/null 2>&1; then
+      kill -9 "${pid}" > /dev/null 2>&1 || true
+    fi
+  fi
+
+  if [[ -n "${tmp_dir}" && -d "${tmp_dir}" ]]; then
+    cleanup_tmp_dir "${tmp_dir}"
+  fi
+  cleanup_worker_tmp_dirs "${worker}" "${task_name}"
+
+  if [[ -z "${branch}" ]]; then
+    branch="worker/${worker}/${task_name}"
+  fi
+  delete_worker_branch "${branch}"
+}
+
+# restart_cleanup_in_flight
+# Purpose: Stop any in-flight workers for a task and clear tracking entries.
+# Args:
+#   $1: Task name (string).
+# Output: None.
+# Returns: 0 on completion.
+restart_cleanup_in_flight() {
+  local task_name="$1"
+  if [[ -z "${task_name}" ]]; then
+    return 0
+  fi
+
+  local workers=()
+  local task=""
+  local worker=""
+  while IFS='|' read -r task worker; do
+    if [[ "${task}" == "${task_name}" ]]; then
+      workers+=("${worker}")
+    fi
+  done < <(in_flight_entries)
+
+  for worker in "${workers[@]}"; do
+    restart_cleanup_worker "${task_name}" "${worker}"
+    in_flight_remove "${task_name}" "${worker}"
+  done
+
+  in_flight_remove "${task_name}" ""
+}
+
+# restart_tasks
+# Purpose: Reset tasks to backlog and remove all notes/annotations.
+# Args:
+#   $@: Task prefixes (string) and optional --dry-run.
+# Output: Logs task state changes and cleanup actions.
+# Returns: 0 on completion; exits 1 on invalid input.
+restart_tasks() {
+  if [[ "$#" -lt 1 ]]; then
+    log_error "Usage: restart [--dry-run] <task-prefix> [task-prefix ...]"
+    exit 1
+  fi
+
+  local dry_run=0
+  local prefixes=()
+  local arg=""
+  while [[ "$#" -gt 0 ]]; do
+    arg="$1"
+    case "${arg}" in
+      --dry-run)
+        dry_run=1
+        ;;
+      *)
+        prefixes+=("${arg}")
+        ;;
+    esac
+    shift
+  done
+
+  if [[ "${#prefixes[@]}" -eq 0 ]]; then
+    log_error "Usage: restart [--dry-run] <task-prefix> [task-prefix ...]"
+    exit 1
+  fi
+
+  local prefix
+  for prefix in "${prefixes[@]}"; do
+    if [[ ! "${prefix}" =~ ^[0-9]+$ ]]; then
+      log_error "Invalid task prefix ${prefix}; must be numeric."
+      exit 1
+    fi
+  done
+
+  local task_files=()
+  local task_names=()
+  local task_dirs=()
+  local -A seen=()
+  for prefix in "${prefixes[@]}"; do
+    local task_file
+    if ! task_file="$(task_file_for_prefix "${prefix}")"; then
+      log_error "No task matches prefix ${prefix}"
+      exit 1
+    fi
+    local task_name
+    task_name="$(basename "${task_file}" .md)"
+    if [[ -n "${seen[${task_name}]+x}" ]]; then
+      continue
+    fi
+    seen["${task_name}"]=1
+    task_files+=("${task_file}")
+    task_names+=("${task_name}")
+    task_dirs+=("$(basename "$(dirname "${task_file}")")")
+  done
+
+  if [[ "${dry_run}" -eq 1 ]]; then
+    log_info "Dry run: restart ${task_names[*]}"
+  else
+    sync_default_branch
+  fi
+
+  local idx=0
+  local task_file=""
+  local task_name=""
+  local task_dir=""
+  local dest_file=""
+  for idx in "${!task_files[@]}"; do
+    task_file="${task_files[${idx}]}"
+    task_name="${task_names[${idx}]}"
+    task_dir="${task_dirs[${idx}]}"
+
+    if [[ "${dry_run}" -eq 1 ]]; then
+      if in_flight_has_task "${task_name}"; then
+        log_info "Dry run: would stop in-flight workers for ${task_name}"
+      fi
+    else
+      restart_cleanup_in_flight "${task_name}"
+    fi
+
+    if [[ "${dry_run}" -eq 1 ]]; then
+      log_info "Dry run: would move ${task_name} from ${task_dir} to task-backlog"
+      log_info "Dry run: would truncate notes for ${task_name}"
+      continue
+    fi
+
+    if [[ "${task_dir}" != "task-backlog" ]]; then
+      move_task_file "${task_file}" "${STATE_DIR}/task-backlog" "${task_name}" "restarted by operator"
+      dest_file="${STATE_DIR}/task-backlog/${task_name}.md"
+    else
+      log_task_event "${task_name}" "restarted by operator"
+      dest_file="${task_file}"
+    fi
+
+    truncate_task_notes "${dest_file}"
+  done
+
+  if [[ "${dry_run}" -eq 1 ]]; then
+    return 0
+  fi
+
+  git -C "${ROOT_DIR}" add "${STATE_DIR}"
+  git -C "${ROOT_DIR}" commit -q -m "[governator] Restart tasks ${task_names[*]}"
   git_push_default_branch
 }
 
