@@ -276,3 +276,6 @@
 2026-01-09T00:34Z 010-import-and-cleanup-generalist -> worker elapsed reviewer: 100s
 2026-01-09T00:34Z 010-import-and-cleanup-generalist -> review decision: approve
 2026-01-09T00:34Z 010-import-and-cleanup-generalist -> moved to task-done
+2026-01-09T00:36Z 007-sync-and-filtering-generalist -> worker elapsed generalist: 416s
+2026-01-09T00:36Z 007-sync-and-filtering-generalist -> starting review for 007-sync-and-filtering-generalist
+2026-01-09T00:36Z 007-sync-and-filtering-generalist -> worker reviewer started
