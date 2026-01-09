@@ -252,3 +252,6 @@
 2026-01-09T00:30Z 008-serialized-download-generalist -> worker elapsed generalist: 83s
 2026-01-09T00:30Z 008-serialized-download-generalist -> starting review for 008-serialized-download-generalist
 2026-01-09T00:30Z 008-serialized-download-generalist -> worker reviewer started
+2026-01-09T00:31Z 004-config-loading-generalist -> worker elapsed generalist: 140s
+2026-01-09T00:31Z 004-config-loading-generalist -> starting review for 004-config-loading-generalist
+2026-01-09T00:31Z 004-config-loading-generalist -> worker reviewer started
