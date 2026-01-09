@@ -283,3 +283,9 @@
 2026-01-09T00:39Z 007-sync-and-filtering-generalist -> worker elapsed reviewer: 184s
 2026-01-09T00:39Z 007-sync-and-filtering-generalist -> review decision: approve
 2026-01-09T00:39Z 007-sync-and-filtering-generalist -> moved to task-done
+2026-01-09T00:39Z 011-core-logic-tests-test_engineer -> assigned to test_engineer
+2026-01-09T00:39Z 011-core-logic-tests-test_engineer -> worker test_engineer started
+2026-01-09T00:39Z 012-ci-pipeline-devops -> assigned to devops
+2026-01-09T00:39Z 012-ci-pipeline-devops -> worker devops started
+2026-01-09T00:39Z 013-readme-documentation-generalist -> assigned to generalist
+2026-01-09T00:39Z 013-readme-documentation-generalist -> worker generalist started
