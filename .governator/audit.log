@@ -318,3 +318,5 @@
 2026-01-09T00:53Z 011-core-logic-tests-test_engineer -> worker elapsed reviewer: 79s
 2026-01-09T00:53Z 011-core-logic-tests-test_engineer -> review decision: reject
 2026-01-09T00:53Z 011-core-logic-tests-test_engineer -> moved to task-assigned
+2026-01-09T00:53Z 011-core-logic-tests-test_engineer -> retrying test_engineer task
+2026-01-09T00:53Z 011-core-logic-tests-test_engineer -> worker test_engineer started
