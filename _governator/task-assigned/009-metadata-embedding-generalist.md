@@ -37,3 +37,7 @@ using `AtomicParsley`, producing Plex-ready media.
 =============================================================================
 
 ## Notes
+
+## Assignment
+
+2026-01-09T00:29:05Z [governator]: Assigned to generalist.
