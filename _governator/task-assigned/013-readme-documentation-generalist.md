@@ -48,3 +48,9 @@ usage of the `yts.sh` pipeline.
 - Updated README to reflect current pipeline stages, configuration, and output
   layout (including state files, staging, and Plex naming).
 - Added usage example for custom config path and clarified skip filter defaults.
+
+## Review Result
+
+2026-01-09T00:43:53Z [reviewer]: Decision: reject
+2026-01-09T00:43:53Z [reviewer]: Comments:
+2026-01-09T00:43:53Z [reviewer]: - README.md: The state filename slugging description is inaccurate; slugify preserves '.', '_' and '-' but the doc says all non-alphanumeric characters become '_' (this violates the requirement that documentation match CLI behavior). Please update the wording in README.md to match the actual slugging rules.
